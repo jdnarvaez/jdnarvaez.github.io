@@ -1,0 +1,108 @@
+.summaryBox {
+  display: flex;
+  flex-direction: row;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+
+    .logo {
+      margin-right: 2vmin;
+      width: 8vmin;
+      height: 8vmin;
+      border-radius: 50%;
+      border: 0.5vmin solid var(--primary-text);
+      box-sizing: border-box;
+      overflow: hidden;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  .right {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .highlights {
+      display: flex;
+      flex-direction: column;
+      font-size: 3vmin;
+      letter-spacing: -0.025vmin;
+      line-height: 4vmin;
+
+      .highlight {
+        margin-bottom: 2vmin;
+        line-height: 3vmin;
+      }
+    }
+
+    .header {
+      font-family: 'Neue Haas';
+      font-weight: 900;
+      font-size: 7vmin;
+      letter-spacing: -0.4vmin;
+      text-transform: lowercase;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        .caption {
+          font-family: 'Neue Haas';
+          font-weight: 900;
+          font-size: 7vmin;
+          letter-spacing: -0.4vmin;
+          text-transform: lowercase;
+          display: flex;
+          flex-direction: column;
+          line-height: 6vmin;
+
+          .years {
+            font-weight: 700;
+            font-size: 3vmin;
+            letter-spacing: -0.2vmin;
+            line-height: 6vmin;
+          }
+
+          .positions {
+            font-weight: 700;
+            font-size: 2.5vmin;
+            line-height: 2.75vmin;
+            letter-spacing: -0.1vmin;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            align-content: center;
+
+            .position:not(:last-child)::after {
+              content: '←';
+              margin-left: 0.5vmin;
+              margin-right: 0.5vmin;
+            }
+          }
+
+          .organization {
+            font-weight: 700;
+            font-size: 2vmin;
+            line-height: 2.75vmin;
+            letter-spacing: -0.05vmin;
+          }
+        }
+
+        .divider {
+          height: 1px;
+          width: 100%;
+          margin-top: 2vmin;
+          border-bottom: 1px solid var(--primary-text);
+          margin-bottom: 3vmin;
+        }
+      }
+    }
+  }
+}
