@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: (--blue);
+  --secondary: #6c757d;
+  --success: var(--teal);
+  --info: #17a2b8;
+  --warning: var(--orange);
+  --danger: var(--pink);
+  --light: #f8f9fa;
+  --dark: #343a40;
+
+  --low: #32ccbc;
+  --medium: #f8d800;
+  --high: #f6416c;
+  --very-high: #8c1bab;
+  --severe: #513162;
+  --volt: #ceff00;
+
+  --primary-text: rgb(240, 240, 210);
+  --bg-primary: rgb(5, 10, 15);
+  --bg-secondary: rgb(20, 25, 35);
+}
+
+.text-foreground {
+  color: var(--primary-text);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 16px;
+}
+
+html,
+body {
+  display: flex;
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  background-image: linear-gradient(
+    315deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 74%
+  );
+  /* overscroll-behavior-y: none; */
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--bg-secondary);
+  border-radius: 16px;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root {
+  isolation: isolate;
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+}
