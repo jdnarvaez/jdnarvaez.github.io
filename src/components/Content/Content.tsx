@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { useWindowSize } from '@/hooks';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { ContentAnchor } from '../ContentAnchor';
 import { Disciplines, FloatingBox, Name, SummaryBox } from '..';
 import styles from './Content.module.css';
 import avatar from '../../assets/avatar.png';
@@ -12,8 +14,12 @@ import patentedLogo from '../../assets/patented.jpg';
 import cernerLogo from '../../assets/cerner.jpg';
 import oracleLogo from '../../assets/oracle.jpg';
 import washULogo from '../../assets/washu.png';
-import { ContentAnchor } from '../ContentAnchor';
-import { useEffect } from 'react';
+import betaReports from '../../assets/beta-reports.png';
+import flexible1 from '../../assets/flexible1.png';
+import insights_module from '../../assets/insights_module.png';
+
+import skyvue_1 from '../../assets/skyvue_1.png';
+import cerner_cardio from '../../assets/cerner_cardio.png';
 
 const bodyHeight = 100;
 
@@ -163,9 +169,10 @@ export const Content = ({ onShow }: Props) => {
           title={'anedot'}
           years={`feb . 2022  -  present`}
           logo={anedotLogo}
-          positions={['Lead Engineer']}
-          organization="Action Pages"
+          positions={['Director of Engineering', 'Lead Engineer']}
+          organization="Engineering, Action Pages"
           highlights={[
+            'Led teams implementing Anedot X feature uplift & rollout',
             'Worked to create pixel - perfect replications of visual designs and interactions',
             'Developed next iteration of page builder',
             'Oversaw contributions to newest frontend',
@@ -183,6 +190,10 @@ export const Content = ({ onShow }: Props) => {
             'chakra-ui',
             'npm',
             'yarn',
+            'clickup',
+            'vite',
+            'ruby',
+            'rails'
           ]}
         />
 
@@ -213,6 +224,11 @@ export const Content = ({ onShow }: Props) => {
             'webpack',
             'automated testing',
             'npm',
+          ]}
+          images={[
+            insights_module,
+            betaReports,
+            flexible1
           ]}
         />
 
@@ -261,6 +277,10 @@ export const Content = ({ onShow }: Props) => {
             'containerized deployments',
             'data visualization',
             'data aggregation & registration',
+          ]}
+          images={[
+            cerner_cardio,
+            skyvue_1
           ]}
         />
 

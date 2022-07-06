@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a l
 import { FloatingBox, FloatingBoxProps } from '../FloatingBox';
 import { Tags } from '../Tags';
 
@@ -23,6 +25,7 @@ type Props = Omit<FloatingBoxProps, 'children'> & {
   positions?: string[];
   organization?: string;
   tags?: string[];
+  images?: string[];
 };
 
 export const SummaryBox = ({
@@ -33,6 +36,7 @@ export const SummaryBox = ({
   positions,
   organization,
   tags,
+  images,
   ...props
 }: Props) => {
   const [ref, inView, entry] = useInView({
@@ -95,6 +99,9 @@ export const SummaryBox = ({
                 </motion.div>
               ))}
             </motion.div>
+            {images && images?.length > 0 && <Carousel showArrows={true} showThumbs={false} autoPlay autoFocus={false} infiniteLoop stopOnHover className={styles.carousel}>
+              {images.map((src) => <div className={styles.carouselImage}><img src={src} /></div>)}
+            </Carousel>}
           </motion.div>
         </motion.div>
       </FloatingBox>
