@@ -169,8 +169,8 @@ export const Content = ({ onShow }: Props) => {
           title={'anedot'}
           years={`feb . 2022  -  present`}
           logo={anedotLogo}
-          positions={['Director of Engineering', 'Lead Engineer']}
-          organization="Engineering, Action Pages"
+          positions={['Lead Software Engineer', 'Director of Engineering', 'sr. Software Engineer']}
+          organization="Engineering, Action Pages, Infrastructure"
           highlights={[
             'Led teams implementing Anedot X feature uplift & rollout',
             'Worked to create pixel - perfect replications of visual designs and interactions',
