@@ -17,6 +17,7 @@ import washULogo from '../../assets/washu.png';
 import betaReports from '../../assets/beta-reports.png';
 import flexible1 from '../../assets/flexible1.png';
 import insights_module from '../../assets/insights_module.png';
+import vannevar_logo from '../../assets/vannevar_logo.png';
 
 import skyvue_1 from '../../assets/skyvue_1.png';
 import cerner_cardio from '../../assets/cerner_cardio.png';
@@ -164,12 +165,43 @@ export const Content = ({ onShow }: Props) => {
             'data aggregation & registration',
           ]}
         />
+        
+        <SummaryBox
+          title={'vannevar labs'}
+          years={`Sept . 2023  -  present`}
+          logo={vannevar_logo}
+          positions={['Senior Software Engineer']}
+          organization="information operations"
+          highlights={[
+            'Wrote reusable platform components for scaffolding full stack applications',
+            'Integrated OpenTelemetry into full stack',
+            'Helped take multiple applications from MVP to Product',
+            'Reusable frontend interceptors for OAuth & instrumentation',
+            'Reusable backend filters for OAuth',
+            "Created shared UI libraries & design system",
+            "Shared geospatial libraries & layers based on leaflet / mapbox"
+          ]}
+          tags={[
+            'react',
+            'typescript',
+            'git',
+            'asana',
+            'lean',
+            'next-ui',
+            'npm',
+            'vite',
+            'express',
+            'rest',
+            'oauth',
+            'web performance'
+          ]}
+        />
 
         <SummaryBox
           title={'anedot'}
-          years={`feb . 2022  -  present`}
+          years={`feb . 2022  -  sept . 2023`}
           logo={anedotLogo}
-          positions={['Lead Software Engineer', 'Director of Engineering', 'sr. Software Engineer']}
+          positions={['Director of Engineering', 'Lead Software Engineer', 'sr. Software Engineer']}
           organization="Engineering, Action Pages, Infrastructure"
           highlights={[
             'Led teams implementing Anedot X feature uplift & rollout',
@@ -190,7 +222,6 @@ export const Content = ({ onShow }: Props) => {
             'chakra-ui',
             'npm',
             'yarn',
-            'clickup',
             'vite',
             'ruby',
             'rails'
