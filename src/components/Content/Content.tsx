@@ -179,7 +179,9 @@ export const Content = ({ onShow }: Props) => {
             'Reusable frontend interceptors for OAuth & instrumentation',
             'Reusable backend filters for OAuth',
             "Created shared UI libraries & design system",
-            "Shared geospatial libraries & layers based on leaflet / mapbox"
+            "Shared geospatial libraries & layers based on leaflet / mapbox",
+            "Variety of visualizations and filtering for data modeling and analysis",
+            "Reusable GH workflows"
           ]}
           tags={[
             'react',
