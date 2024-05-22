@@ -173,15 +173,15 @@ export const Content = ({ onShow }: Props) => {
           positions={['Senior Software Engineer']}
           organization="information operations"
           highlights={[
-            'Wrote reusable platform components for scaffolding full stack applications',
+            'Designed & devleoped reusable platform components for scaffolding full stack applications',
             'Integrated OpenTelemetry into full stack',
             'Helped take multiple applications from MVP to Product',
-            'Reusable frontend interceptors for OAuth & instrumentation',
-            'Reusable backend filters for OAuth',
+            'Designed & devleoped reusable frontend interceptors for OAuth & instrumentation',
+            'Designed & devleoped reusable backend filters for OAuth',
             "Created shared UI libraries & design system",
-            "Shared geospatial libraries & layers based on leaflet / mapbox",
-            "Variety of visualizations and filtering for data modeling and analysis",
-            "Reusable GH workflows"
+            "Designed & devleoped shared geospatial libraries & layer services based on leaflet / mapbox",
+            "Designed & devleoped Variety of visualizations and filtering for data modeling and analysis",
+            "Created reusable GH workflows"
           ]}
           tags={[
             'react',
@@ -195,7 +195,8 @@ export const Content = ({ onShow }: Props) => {
             'express',
             'rest',
             'oauth',
-            'web performance'
+            'web performance',
+            'uma'
           ]}
         />
 
