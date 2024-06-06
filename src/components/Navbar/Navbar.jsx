@@ -6,6 +6,7 @@ import { MdOutlineDownloadForOffline } from 'react-icons/md';
 
 import styles from './Navbar.module.scss';
 import image from '../../assets/avatar.png';
+import resume from '../../assets/jdnarvaez_resume.pdf';
 
 const spring = {
   type: 'spring',
@@ -88,7 +89,7 @@ export const Navbar = ({ children, activeItem }) => {
         {children}
       </motion.div>
 
-      {/* <motion.div
+      <motion.div
         initial={{
           transform: 'translate(-110%, 0%)',
         }}
@@ -106,10 +107,11 @@ export const Navbar = ({ children, activeItem }) => {
           marginBottom: '5px',
           cursor: 'pointer',
         }}
-        onClick={() => open('https://github.com/jdnarvaez', '_blank')}
+        title="Download Resume"
+        onClick={() => open(resume, '_blank')}
       >
         <MdOutlineDownloadForOffline />
-      </motion.div> */}
+      </motion.div>
       <motion.div
         initial={{
           transform: 'translate(-110%, 0%)',
@@ -118,7 +120,6 @@ export const Navbar = ({ children, activeItem }) => {
           transform: 'translate(0%, 0%)',
         }}
         style={{
-          marginTop: 'auto',
           zIndex: 1,
           color: 'var(--primary-text)',
           fontSize: '55px',
