@@ -1,21 +1,9 @@
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
-import { useInView } from 'react-intersection-observer';
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a l
-import { FloatingBox, FloatingBoxProps } from '../FloatingBox';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a l
+import { BackgroundGradient } from '../BackgroundGradient/BackgroundGradient';
+import { FloatingBoxProps } from '../FloatingBox';
 import { Tags } from '../Tags';
-
-import styles from './SummaryBox.module.scss';
-
-const variants = {
-  visible: { opacity: 1, scale: 1, y: 0 },
-  hidden: {
-    opacity: 0,
-    scale: 0.65,
-    y: 50,
-  },
-};
 
 type Props = Omit<FloatingBoxProps, 'children'> & {
   title: string;
@@ -39,72 +27,72 @@ export const SummaryBox = ({
   images,
   ...props
 }: Props) => {
-  const [ref, inView, entry] = useInView({
-    /* Optional options */
-    threshold: 0.2,
-    triggerOnce: true,
-  });
-
   return (
     <motion.div
-      style={{ width: '100%', marginBottom: '6vmin' }}
-      ref={ref}
-      animate={inView ? 'visible' : 'hidden'}
-      variants={variants}
-      transition={{ duration: 1, ease: 'easeOut' }}
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      className="max-w-[60%] min-w-[60%] w-full flex justify-center"
     >
-      <FloatingBox
-        {...props}
-        className={styles.summaryBox}
-        style={{
-          marginRight: '20%',
-          paddingRight: '3vmin',
-          paddingTop: '3vmin',
-          paddingLeft: '3vmin',
-          marginLeft: '20%',
-          paddingBottom: '3vmin',
-        }}
-      >
-        <motion.div className={styles.left}>
-          <motion.div className={styles.logo} style={{ backgroundImage: `url(${logo})` }} />
-        </motion.div>
-        <motion.div className={styles.right}>
-          <motion.div className={styles.header}>
-            <motion.div className={styles.info}>
-              <motion.div className={styles.caption}>
-                <motion.div>{title}</motion.div>
-                {years && <motion.div className={styles.years}>{years}</motion.div>}
-                {positions && (
-                  <motion.div className={styles.positions}>
-                    {positions.map((position) => (
-                      <div key={position} className={styles.position}>
-                        {position}
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
-                {organization && (
-                  <motion.div className={styles.organization}>{organization}</motion.div>
-                )}
-                <Tags tags={tags} />
-              </motion.div>
-              <motion.div className={styles.divider} />
-            </motion.div>
-          </motion.div>
-          <motion.div className={styles.content}>
-            <motion.div className={`${styles.highlights} light-text`}>
-              {highlights.map((highlight, idx) => (
-                <motion.div className={styles.highlight} key={`highlight-${idx}`}>
-                  {highlight}
-                </motion.div>
-              ))}
-            </motion.div>
-            {images && images?.length > 0 && <Carousel showArrows={true} showThumbs={false} autoPlay autoFocus={false} infiniteLoop stopOnHover className={styles.carousel}>
-              {images.map((src) => <div className={styles.carouselImage}><img src={src} /></div>)}
-            </Carousel>}
-          </motion.div>
-        </motion.div>
-      </FloatingBox>
+      <BackgroundGradient className="rounded-[22px] p-8 bg-[var(--bg-primary)] text-[var(--primary-text)] flex flex-col gap-2 w-full">
+        <div className="flex items-center gap-4">
+          <div
+            className="min-w-[8vmin] max-w-[8vmin] min-h-[8vmin] max-h-[8vmin] bg-cover bg-no-repeat overflow-hidden rounded-full"
+            style={{
+              backgroundImage: `url(${logo})`,
+              border: '0.5vmin solid var(--primary-text)',
+            }}
+          />
+          <div className="flex flex-col">
+            <div className="flex flex-col gap-2 font-bold tracking-tighter text-[7vmin] leading-[7vmin]">
+              {title}
+            </div>
+            {years ? (
+              <div className="tracking-tighter font-bold text-[1.5vmin] leading-[2vmin] uppercase opacity-[.6]">
+                {years}
+              </div>
+            ) : null}
+            {positions ? (
+              <div className="flex lowercase font-bold text-[2vmin] leading-[2.5vmin] opacity-[.9]">
+                {positions.join(' ← ')}
+              </div>
+            ) : null}
+            {organization ? (
+              <div className="tracking-tighter font-bold text-[2vmin] leading-[2.5vmin] lowercase opacity-[.6]">
+                {organization}
+              </div>
+            ) : null}
+          </div>
+        </div>
+        <Tags tags={tags} />
+        <div className="border-b-2 border-[var(--primary-text)] py-1" />
+        <div className="flex gap-16 mt-2 flex-col sm:flex-row items-center">
+          <div className="light-text tracking-[-0.025vmin] text-[2vmin] flex flex-col">
+            {highlights.map((highlight, idx) => (
+              <div key={`highlight-${idx}`}>{highlight}</div>
+            ))}
+          </div>
+          {images?.length ? (
+            <div className="rounded-3xl overflow-hidden w-full sm:max-w-[50%] ml-auto">
+              <Carousel
+                showArrows={true}
+                showThumbs={false}
+                autoPlay
+                autoFocus={false}
+                infiniteLoop
+                stopOnHover
+                className="w-full"
+              >
+                {images.map(src => (
+                  <div className="w-full" key={src}>
+                    <img src={src} />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+          ) : null}
+        </div>
+      </BackgroundGradient>
     </motion.div>
   );
 };

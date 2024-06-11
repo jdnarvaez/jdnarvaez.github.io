@@ -1,16 +1,17 @@
-import { motion, MotionProps, MotionValue } from 'framer-motion';
-import { ReactNode, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { PropsWithChildren, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-type Props = Pick<MotionProps, 'style'> & {
+type Props = {
   id: string;
-  y?: number | MotionValue;
-  x?: number;
   onShow?: (id: string) => void;
-  children: ReactNode;
 };
 
-export const ContentAnchor = ({ id, children, y, x = 0, onShow, style }: Props) => {
+export const ContentAnchor = ({
+  id,
+  children,
+  onShow,
+}: PropsWithChildren<Props>) => {
   const [ref, inView] = useInView({
     threshold: 0.5,
     triggerOnce: false,
@@ -25,15 +26,19 @@ export const ContentAnchor = ({ id, children, y, x = 0, onShow, style }: Props) 
   return (
     <motion.div
       id={id}
-      style={Object.assign(
-        { y, x, width: '100%', display: 'flex', justifyContent: 'center' },
-        style
-      )}
+      className="flex w-full items-center justify-center"
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
     >
       <div
         ref={ref}
         className="extra-bold-text"
-        style={{ fontSize: '10vmin', letterSpacing: '-.75vmin', color: 'var(--primary-text)' }}
+        style={{
+          fontSize: '10vmin',
+          letterSpacing: '-.75vmin',
+          color: 'var(--primary-text)',
+        }}
       >
         {children}
       </div>

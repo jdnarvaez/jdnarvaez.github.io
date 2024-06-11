@@ -1,134 +1,90 @@
-import { useWindowSize } from '@/hooks';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { Disciplines, FloatingBox, Name, SummaryBox } from '..';
+import { BackgroundGradient } from '../BackgroundGradient/BackgroundGradient';
+import { ContentAnchor } from '../ContentAnchor/ContentAnchor';
+import { Disciplines } from '../Disciplines';
+import { Name } from '../Name';
+import { SummaryBox } from '../SummaryBox';
+
 import anedotLogo from '../../assets/anedot.png';
 import appleLogo from '../../assets/apple.jpg';
 import avatar from '../../assets/avatar.png';
 import betaReports from '../../assets/beta-reports.png';
+import cerner_cardio from '../../assets/cerner_cardio.png';
 import flexible1 from '../../assets/flexible1.png';
 import hudlLogo from '../../assets/hudl.jpg';
 import insights_module from '../../assets/insights_module.png';
 import oracleLogo from '../../assets/oracle.jpg';
 import patentedLogo from '../../assets/patented.jpg';
+import skyvue_1 from '../../assets/skyvue_1.png';
 import vannevar_logo from '../../assets/vannevar_logo.png';
 import washULogo from '../../assets/washu.png';
-import { ContentAnchor } from '../ContentAnchor';
-import styles from './Content.module.css';
-
-import cerner_cardio from '../../assets/cerner_cardio.png';
-import skyvue_1 from '../../assets/skyvue_1.png';
-
-const bodyHeight = 100;
 
 type Props = {
   onShow?: (id: string) => void;
 };
 
-export const Content = ({ onShow }: Props) => {
-  const { height } = useWindowSize();
-  const { scrollY } = useViewportScroll();
-  const y1 = useTransform(scrollY, [0, bodyHeight], [0, 250]);
-  const y2 = useTransform(scrollY, [0, bodyHeight], [0, -100]);
-  const y3 = useTransform(scrollY, [0, bodyHeight], [0, -200]);
-  const y4 = useTransform(scrollY, [0, bodyHeight], [0, -300]);
-
-  const [ref, inView] = useInView({
-    threshold: 0.5,
-    triggerOnce: false,
-  });
-
+export const Content2 = ({ onShow }: Props) => {
   useEffect(() => {
-    if (inView) {
-      onShow?.('intro');
-    }
-  }, [inView]);
+    window.addEventListener('onwheel', e => console.log(e));
+  }, []);
 
   return (
-    <div className={styles.content}>
-      <div className={styles.shadow} />
-      <div className={styles.panels}>
-        <div style={{ height: height / 8 }} ref={ref} id="intro" />
+    <div className="ml-[110px] overflow-y-auto flex flex-col overflow-x-hidden z-10">
+      <ContentAnchor id={'intro'} onShow={onShow} />
+      <div className="flex items-center justify-center pt-16 px-16 mt-[15%]">
+        <Name />
+      </div>
+      <motion.div style={{ x: '75%', width: '60%' }} className="mt-[-5%]">
         <motion.div
+          className="flex w-full mb-[25%]"
           style={{
-            y: y1,
-            x: '30%',
-            width: '70%',
             filter: 'drop-shadow(5px 5px 4px var(--bg-primary))',
           }}
+          initial={{ x: '-100vw' }}
+          animate={{ x: 0 }}
+          transition={{ delay: 1 }}
         >
-          <Name />
+          <Disciplines />
         </motion.div>
-        <motion.div style={{ y: y2, x: '75%', width: '60%' }}>
-          <motion.div
-            style={{
-              display: 'flex',
-              width: '100%',
-              filter: 'drop-shadow(5px 5px 4px var(--bg-primary))',
-            }}
-            initial={{ x: '-100vw' }}
-            animate={{ x: 0 }}
-            transition={{ delay: 1 }}
-          >
-            <Disciplines />
-          </motion.div>
-        </motion.div>
-        <motion.div style={{ y: y3, x: 0, width: '100%' }}>
-          <FloatingBox
-            style={{
-              marginRight: '10%',
-              paddingRight: '25px',
-              paddingTop: '25px',
-              paddingLeft: '25px',
-              marginLeft: '20%',
-              marginTop: '100px',
-            }}
-            initial={{ x: '100vw' }}
-            animate={{ x: 0 }}
-            transition={{ delay: 1.5 }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                fontSize: '20px',
-                lineHeight: '1.3',
-                flexDirection: 'column',
-              }}
-            >
-              <div
-                className="extra-bold-text"
-                style={{ justifySelf: 'flex-start', fontSize: '30' }}
-              >
-                hello!
-              </div>
-              <p
-                className="light-text"
-                style={{
-                  textAlign: 'right',
-                }}
-              >
-                I'm Juan Narváez, and I enjoy desiging and writing software
-                (amongst other things). I've spent most of my career working on
-                frontend applications in the realm of visualization and image
-                processing (mostly medical imaging). I've also written a variety
-                of backend services for processing and streaming image data, as
-                well as the corresponding frontend components to take advantage
-                of those services.
-              </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0.0, y: 40, scale: 0 }}
+        animate={{ x: 0 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{
+          delay: 2,
+          ease: 'easeInOut',
+        }}
+        className="flex flex-col gap-4 p-12 w-full"
+      >
+        <div className="flex max-w-[75%] ml-auto">
+          <BackgroundGradient className="rounded-[22px] p-8 bg-[var(--bg-primary)] text-[var(--primary-text)] gap-4 flex flex-col">
+            <div className="extra-bold-text text-[4vmin] justify-start">
+              hello!
             </div>
-          </FloatingBox>
-        </motion.div>
+            <p className="light-text text-right text-[2vmin]">
+              I'm Juan Narváez, and I enjoy desiging and writing software
+              (amongst other things). I've spent most of my career working on
+              frontend applications in the realm of visualization and image
+              processing (mostly medical imaging). I've also written a variety
+              of backend services for processing and streaming image data, as
+              well as the corresponding frontend components to take advantage of
+              those services.
+            </p>
+          </BackgroundGradient>
+        </div>
+      </motion.div>
 
-        <motion.div style={{ height: height / 3 }} />
-
+      <div className="flex w-full items-center justify-center py-[7vmin]">
         <ContentAnchor id={'experience'} onShow={onShow}>
           experience
         </ContentAnchor>
+      </div>
 
-        <motion.div style={{ height: 50 }} />
-
+      <div className="flex flex-col gap-24 px-24 pb-24 w-full items-center">
         <SummaryBox
           title={'intellectual property'}
           logo={patentedLogo}
@@ -399,7 +355,11 @@ export const Content = ({ onShow }: Props) => {
           ]}
         />
 
-        <ContentAnchor id={'education'} onShow={onShow}>
+        <ContentAnchor
+          id={'education'}
+          style={{ marginBottom: '6vmin' }}
+          onShow={onShow}
+        >
           education
         </ContentAnchor>
 
@@ -426,21 +386,12 @@ export const Content = ({ onShow }: Props) => {
           ]}
         />
 
-        <FloatingBox
-          style={{
-            marginRight: '30%',
-            marginLeft: '30%',
-            padding: '3vmin',
-            marginBottom: '6vmin',
-          }}
-        >
-          <div
-            className="light-text"
-            style={{ textAlign: 'center', fontSize: '4vmin' }}
-          >
-            This site was created with reactJS, threeJS, and framer motion.
+        <BackgroundGradient className="rounded-[22px] p-8 bg-[var(--bg-primary)] text-[var(--primary-text)] flex flex-col gap-2 w-full">
+          <div className="font-bold tracking-tight flex items-center text-[2vmin]">
+            This site was created with react, tailwind, aceternity, and framer
+            motion.
           </div>
-        </FloatingBox>
+        </BackgroundGradient>
       </div>
     </div>
   );

@@ -1,7 +1,5 @@
 import { Tag } from './Tag';
 
-import styles from './Tags.module.scss';
-
 type Props = {
   tags?: string[];
 };
@@ -12,8 +10,8 @@ export const Tags = ({ tags }: Props) => {
   }
 
   return (
-    <div className={styles.tags}>
-      {tags.map((tag) => (
+    <div className="flex flex-wrap gap-2">
+      {tags.map(tag => (
         <Tag key={tag}>{tag}</Tag>
       ))}
     </div>
