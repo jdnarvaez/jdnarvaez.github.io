@@ -70,7 +70,7 @@ export const Content2 = ({ onShow }: Props) => {
               (amongst other things). I've spent most of my career working on
               frontend applications in the realm of visualization and image
               processing (mostly medical imaging). I've also written a variety
-              of backend services for processing and streaming image data, as
+              of backend services for processing and stroeaming image data, as
               well as the corresponding frontend components to take advantage of
               those services.
             </p>
@@ -223,7 +223,7 @@ export const Content2 = ({ onShow }: Props) => {
         />
 
         <SummaryBox
-          title={'cerner (oracle)'}
+          title={'cerner (oracle health)'}
           years={'oct . 2017  -  oct . 2021'}
           logo={oracleLogo}
           positions={[
@@ -306,7 +306,7 @@ export const Content2 = ({ onShow }: Props) => {
         />
 
         <SummaryBox
-          title={'cerner (oracle)'}
+          title={'cerner (oracle health)'}
           years={'june . 2007  -  jan . 2014'}
           logo={oracleLogo}
           positions={[
