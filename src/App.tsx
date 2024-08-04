@@ -1,12 +1,10 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import Favicon from 'react-favicon';
 import favicon from './assets/favicon.svg';
-
 import { Fonts, NavItem, Navbar } from './components';
-
-import { AnimatePresence, motion } from 'framer-motion';
 import { BackgroundBeams } from './components/BackgroundBeams/BackgroundBeams';
-import { Content2 } from './components/Content2/Content2';
+import { Content } from './components/Content/Content';
 
 const items = ['intro', 'experience', 'education'];
 
@@ -44,8 +42,7 @@ export default function App() {
           ))}
         </Navbar>
         <BackgroundBeams />
-        <Content2 onShow={id => setActiveNavItem(id)} />
-        {/* <Content onShow={id => setActiveNavItem(id)} /> */}
+        <Content onShow={id => setActiveNavItem(id)} />
       </motion.div>
     </AnimatePresence>
   );
