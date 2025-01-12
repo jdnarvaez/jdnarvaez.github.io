@@ -86,7 +86,7 @@ export const Content = ({ onShow }: Props) => {
           highlights={[
             'Patent on Remote Desktop Visualization / Compression / Delivery to a Browser',
             'Provisional Patent on Image Caching for High Frame Rates',
-            'Provisional Patent on Modeling of Relationships of 2D/3D Images for Linked Display & Navigation',
+            'Provisional Patent on Modeling of Relationships of 2D/3D Images for Linked Display + Navigation',
           ]}
         />
 
@@ -113,7 +113,7 @@ export const Content = ({ onShow }: Props) => {
             'hardware control',
             'location services',
             'data visualization',
-            'data aggregation & registration',
+            'data aggregation + registration',
           ]}
         />
 
@@ -122,23 +122,28 @@ export const Content = ({ onShow }: Props) => {
           years={`Sept . 2023  -  present`}
           logo={vannevar_logo}
           positions={['Senior Software Engineer']}
-          organization="hardware, sensors platform, information environment"
+          organizations={[
+            'hardware',
+            'sensors',
+            'platform',
+            'information environment',
+          ]}
           highlights={[
             'Software provisioning system for sensors',
-            'ADS-B / AIS signal collection + visualization',
+            'ADS-B / AIS / generic signal collection + visualization',
             'Real-time remote spectrum analyzer',
             'Spectrogram viewer + visualization tools',
-            'Data + signal visualization',
-            'Authentication & Authorization Services / Web UI based on OpenID & OpenFGA',
-            'Designed & developed reusable platform components for scaffolding full stack applications',
+            'Data visualization',
+            'Authentication + authorization services / web UI based on OpenID + OpenFGA',
+            'Designed + developed reusable platform components for scaffolding full stack applications',
             'App launcher framework + UI',
             'Integrated OpenTelemetry into full stack',
             'Helped take multiple applications from MVP to Product',
             'Frontend OAuth + instrumentation interceptors',
-            'Back OAuth Filters',
-            'Created shared UI libraries & design system',
-            'Designed & devleoped shared geospatial libraries & layer services based on leaflet / mapbox',
-            'Designed & devleoped Variety of visualizations and filtering for data modeling and analysis',
+            'Backend OAuth filters',
+            'Created shared UI libraries + design system',
+            'Designed + devleoped shared geospatial libraries + layer services based on leaflet / mapbox',
+            'Designed + devleoped Variety of visualizations and filtering for data modeling and analysis',
             'Reusable GH workflows',
           ]}
           tags={[
@@ -173,15 +178,15 @@ export const Content = ({ onShow }: Props) => {
             'Lead Software Engineer',
             'sr. Software Engineer',
           ]}
-          organization="Engineering, Action Pages, Infrastructure"
+          organizations={['Engineering', 'Action Pages', 'Infrastructure']}
           highlights={[
-            'Led teams implementing Anedot X feature uplift & rollout',
+            'Led teams implementing Anedot X feature uplift + rollout',
             'Worked to create pixel - perfect replications of visual designs and interactions',
             'Developed next iteration of page builder',
             'Oversaw contributions to newest frontend',
             'Mentored junior engineers on team',
-            'Various Custom UI Components',
-            'Context Aware Multi Monitor React Components',
+            'Various custom UI components',
+            'Context aware multi-monitor React components',
           ]}
           tags={[
             'react',
@@ -204,13 +209,13 @@ export const Content = ({ onShow }: Props) => {
           years={'oct . 2021  -  feb . 2022'}
           logo={hudlLogo}
           positions={['Lead Engineer']}
-          organization="Hudl Beta"
+          organizations={['Hudl Beta']}
           highlights={[
-            'Implemented Facets of New Insights Module',
-            'Overview Stats Report',
-            'Various Visualization Modules',
-            'Dynamic Layout System',
-            'Multi Monitor Layout Manager',
+            'Implemented cacets of new Insights Module',
+            'Overview stats report',
+            'Various visualization modules',
+            'Dynamic layout system',
+            'Multi-monitor layout manager',
           ]}
           tags={[
             'react',
@@ -238,15 +243,15 @@ export const Content = ({ onShow }: Props) => {
             'Associate Principal Engineer',
             'Senior Software Architect',
           ]}
-          organization="Clinical Imaging"
+          organizations={['Clinical Imaging']}
           highlights={[
-            'Designed / Developed Cerner ImageViewer as a successor to Cerner SkyVue',
-            'IHE Compliant Web App for Viewing / Evaluating / Manipulating / Measuring Clinical Images',
-            'Developed an Image Cache / layered strategy to support high FPS rendering in the browser of Ultrasound & other clinical images',
-            'Multi Monitor React Components',
-            'Automated Testing Framework',
-            'Reusable Dashboard for Aggregating Automated Test Data & Regulatory Reporting',
-            'Dashboard for the Presentation & Management of Imaging Archive Data',
+            'Designed / developed Cerner ImageViewer as a successor to Cerner SkyVue',
+            'IHE Compliant web app for biewing / evaluating / manipulating / measuring clinical image datasets',
+            'Developed an image cache / layered strategy to support high FPS rendering in the browser of ultrasound + other clinical images',
+            'Multi-monitor React components',
+            'Automated testing framework',
+            'Reusable dashboard for aggregating automated test data + regulatory reporting',
+            'Dashboard for the Presentation + Management of Imaging Archive Data',
             'XZ Decoder in JavaScript',
             'Snappy Framed Decoder in JavaScript',
           ]}
@@ -277,7 +282,7 @@ export const Content = ({ onShow }: Props) => {
             'kubernetes',
             'containerized deployments',
             'data visualization',
-            'data aggregation & registration',
+            'data aggregation + registration',
           ]}
           images={[cerner_cardio, skyvue_1]}
         />
@@ -287,13 +292,13 @@ export const Content = ({ onShow }: Props) => {
           years={'jan . 2014  -  oct . 2017'}
           logo={appleLogo}
           positions={['POI Engineer']}
-          organization="Maps"
+          organizations={['Maps']}
           highlights={[
             'Worked on internal web app for processing POI data for the Maps platform',
             'Visualization and editing of Transit Shape Data',
-            'Designed / Developed features for real time reporting & management of transit incidents',
+            'Designed / Developed features for real time reporting + management of transit incidents',
             'Apple Pay data ingest',
-            'Developed visualizations for managing vendor data mapping & normalization',
+            'Developed visualizations for managing vendor data mapping + normalization',
           ]}
           tags={[
             'sbt',
@@ -309,7 +314,7 @@ export const Content = ({ onShow }: Props) => {
             'radar',
             'git',
             'data visualization',
-            'data aggregation & registration',
+            'data aggregation + registration',
           ]}
         />
 
@@ -322,22 +327,22 @@ export const Content = ({ onShow }: Props) => {
             'Senior Software Engineer',
             'Entry Level Engineer',
           ]}
-          organization="Clinical Imaging"
+          organizations={['Clinical Imaging']}
           highlights={[
-            'Designed & Developer the Cerner SkyVue Imaging Platform',
-            'Java / C++ based Desktop Application for Diagnostic & Distribution Imaging',
-            'Zero Footprint Imaging Application',
-            'Custom SWT UI Components',
-            'Developed a Multi Monitor SWT Workbench',
-            'Real-time Apoplication Monitoring Services & Visualizations',
-            'Web Application for Workflow Assessments',
-            'High Availability Distributed Disk Cache',
-            'Java HTTP Libraries',
-            'DICOM WADO Web Services',
-            'WMI Library to bridge into Java',
-            'OAuth Utilities & Configuration Management Framework',
-            'HTTP Streaming Libraries for Desktop Mirroring via AirPlay 1',
-            'Parallel JPEG Encoder',
+            'Designed + developed the Cerner SkyVue Imaging Platform',
+            'Java / C++ based desktop application for diagnostic + distribution imaging',
+            'Zero footprint imaging application',
+            'Custom SWT UI components',
+            'Developed a multi-monitor SWT Workbench',
+            'Real-time application monitoring services + visualizations',
+            'Web application for workflow assessments',
+            'High availability distributed disk cache',
+            'Java HTTP libaries',
+            'DICOM WADO web services',
+            'WMI library to bridge into Java',
+            'OAuth utilities + configuration management framework',
+            'HTTP streaming libraries for desktop mirroring via AirPlay 1',
+            'Parallel JPEG encoder',
           ]}
           tags={[
             'Java',
@@ -359,7 +364,7 @@ export const Content = ({ onShow }: Props) => {
             'oauth',
             'parallel processing',
             'data visualization',
-            'data aggregation & registration',
+            'data aggregation + registration',
           ]}
         />
 
@@ -377,7 +382,7 @@ export const Content = ({ onShow }: Props) => {
           logo={washULogo}
           highlights={[
             `Master's of Electrical Engineering`,
-            'Focus on Radiological Imaging & Mathematics',
+            'Focus on radiological imaging + mathematics',
           ]}
         />
 

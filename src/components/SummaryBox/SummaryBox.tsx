@@ -4,6 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a l
 import { BackgroundGradient } from '../BackgroundGradient/BackgroundGradient';
 import { FloatingBoxProps } from '../FloatingBox';
 import { Tags } from '../Tags';
+import { Tag } from '../Tags/Tag';
 
 type Props = Omit<FloatingBoxProps, 'children'> & {
   title: string;
@@ -11,7 +12,7 @@ type Props = Omit<FloatingBoxProps, 'children'> & {
   logo: string;
   highlights: string[];
   positions?: string[];
-  organization?: string;
+  organizations?: string[];
   tags?: string[];
   images?: string[];
 };
@@ -22,7 +23,7 @@ export const SummaryBox = ({
   logo,
   highlights,
   positions,
-  organization,
+  organizations,
   tags,
   images,
   ...props
@@ -52,14 +53,24 @@ export const SummaryBox = ({
                 {years}
               </div>
             ) : null}
+            {organizations?.length ? (
+              <div className="tracking-tighter font-bold text-[1.25vmin] leading-[1.5vmin] lowercase opacity-[.6]">
+                <div className="flex flex-wrap gap-2">
+                  {organizations.map(organization => (
+                    <Tag
+                      key={organization}
+                      background={'var(--slate-700)'}
+                      color={'var(--slate-300)'}
+                    >
+                      {organization}
+                    </Tag>
+                  ))}
+                </div>
+              </div>
+            ) : null}
             {positions ? (
               <div className="flex lowercase font-bold text-[2vmin] leading-[2.5vmin] opacity-[.9]">
                 {positions.join(' ← ')}
-              </div>
-            ) : null}
-            {organization ? (
-              <div className="tracking-tighter font-bold text-[2vmin] leading-[2.5vmin] lowercase opacity-[.6]">
-                {organization}
               </div>
             ) : null}
           </div>
