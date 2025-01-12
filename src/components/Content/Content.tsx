@@ -122,14 +122,20 @@ export const Content = ({ onShow }: Props) => {
           years={`Sept . 2023  -  present`}
           logo={vannevar_logo}
           positions={['Senior Software Engineer']}
-          organization="platform, information environment"
+          organization="hardware, sensors platform, information environment"
           highlights={[
+            'Software provisioning system for sensors',
+            'ADS-B / AIS signal collection + visualization',
+            'Real-time remote spectrum analyzer',
+            'Spectrogram viewer + visualization tools',
+            'Data + signal visualization',
             'Authentication & Authorization Services / Web UI based on OpenID & OpenFGA',
             'Designed & developed reusable platform components for scaffolding full stack applications',
+            'App launcher framework + UI',
             'Integrated OpenTelemetry into full stack',
             'Helped take multiple applications from MVP to Product',
-            'Designed & developed reusable frontend interceptors for OAuth & instrumentation',
-            'Designed & developed reusable backend filters for OAuth',
+            'Frontend OAuth + instrumentation interceptors',
+            'Back OAuth Filters',
             'Created shared UI libraries & design system',
             'Designed & devleoped shared geospatial libraries & layer services based on leaflet / mapbox',
             'Designed & devleoped Variety of visualizations and filtering for data modeling and analysis',
@@ -149,6 +155,12 @@ export const Content = ({ onShow }: Props) => {
             'oauth',
             'web performance',
             'uma',
+            'uhd',
+            'visx',
+            'signals',
+            'sdr',
+            'ais',
+            'ads-b',
           ]}
         />
 
