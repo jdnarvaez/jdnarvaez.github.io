@@ -121,7 +121,7 @@ export const Content = ({ onShow }: Props) => {
           title={'vannevar labs'}
           years={`Sept . 2023  -  present`}
           logo={vannevar_logo}
-          positions={['Senior Software Engineer']}
+          positions={['Senior Staff Engineer']}
           organizations={[
             'hardware',
             'sensors',
@@ -129,12 +129,13 @@ export const Content = ({ onShow }: Props) => {
             'information environment',
           ]}
           highlights={[
-            'Software provisioning system for sensors',
-            'ADS-B / AIS / generic signal collection + visualization',
+            'Realtime FFT visualization system from remote devices',
+            'Software provisioning system for remote sensors',
+            'ADS-B / AIS / RF sweep signal collection + visualization',
             'Real-time remote spectrum analyzer',
             'Spectrogram viewer + visualization tools',
             'Data visualization',
-            'Authentication + authorization services / web UI based on OpenID + OpenFGA',
+            'Authentication + authorization services / web components based on OpenID + OpenFGA',
             'Designed + developed reusable platform components for scaffolding full stack applications',
             'App launcher framework + UI',
             'Integrated OpenTelemetry into full stack',
@@ -152,8 +153,9 @@ export const Content = ({ onShow }: Props) => {
             'git',
             'asana',
             'lean',
-            'next-ui',
-            'npm',
+            'hero-ui',
+            'tailwind',
+            'node',
             'vite',
             'express',
             'rest',
@@ -166,6 +168,9 @@ export const Content = ({ onShow }: Props) => {
             'sdr',
             'ais',
             'ads-b',
+            'python',
+            'iot',
+            'rf',
           ]}
         />
 
