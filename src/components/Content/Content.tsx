@@ -60,8 +60,8 @@ export const Content = ({ onShow }: Props) => {
               (amongst other things). I've spent most of my career working on
               frontend applications in the realm of visualization and image
               processing (mostly medical imaging). I've also written a variety
-              of backend services for processing and stroeaming image data, as
-              well as the corresponding frontend components to take advantage of
+              of backend services for processing + streaming image data, as well
+              as the corresponding frontend components to take advantage of
               those services.
             </p>
           </BackgroundGradient>
