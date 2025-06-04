@@ -56,7 +56,7 @@ export const Content = ({ onShow }: Props) => {
               hello!
             </div>
             <p className="light-text text-right text-[3.25vmin]">
-              I'm Juan Narváez, and I enjoy desiging and writing software
+              I'm Juan Narváez, and I enjoy designing and writing software
               (amongst other things). I've spent most of my career working on
               frontend applications in the realm of visualization and image
               processing (mostly medical imaging). I've also written a variety
