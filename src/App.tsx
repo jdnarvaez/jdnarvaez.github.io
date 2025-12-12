@@ -7,6 +7,8 @@ import { Fonts, NavItem, Navbar } from './components';
 import { BackgroundBeams } from './components/BackgroundBeams/BackgroundBeams';
 import { Content } from './components/Content/Content';
 
+import "@fontsource/space-mono/700.css";
+
 const items = ['intro', 'experience', 'education'];
 
 export default function App() {

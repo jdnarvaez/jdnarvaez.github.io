@@ -20,16 +20,18 @@ export const experience: TimelineEntry[] = [
     years: `Sept . 2023  -  present`,
     positions: ['Senior Staff Engineer'],
     organizations: [
-      'information environment',
-      'hardware',
       'sensors',
+      'hardware',
       'platform',
+      'identity',
+      'access management',
+      'information environment',
     ],
     highlights: [
-      'TAK Server / Integration',
+      'TAK Server & Integration',
       'RF Detection Heatmap Visualizations',
       'Handheld RF Sensor w/ SDR | Touchscreen | Keyboard | LTE | GPS | TAK Capabilities',
-      'Micro-frontend container + platform',
+      'Designed & developed a micro-frontend container + platform',
       'Realtime FFT visualization system from remote devices',
       'Software provisioning system for remote sensors',
       'ADS-B / AIS / RF sweep signal collection + visualization',
@@ -44,9 +46,11 @@ export const experience: TimelineEntry[] = [
       'Frontend OAuth + instrumentation interceptors',
       'Backend OAuth filters',
       'Created shared UI libraries + design system',
-      'Designed + developed shared geospatial libraries + layer services based on leaflet / mapbox',
+      'Designed + developed shared geo-spatial libraries + layer services based on Leaflet / Mapbox',
       'Designed + developed Variety of visualizations and filtering for data modeling and analysis',
       'Reusable GH workflows',
+      'Service Directory services + frontend / backend utilities for accessing that API',
+      'Reverse Geocoder services'
     ],
 
     tags: [

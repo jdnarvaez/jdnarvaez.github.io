@@ -16,6 +16,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@fontsource/space-mono": "^5.2.9",
     "@heroui/react": "^2.7.8",
     "@react-spring/core": "^9.4.5",
     "@react-spring/three": "^9.4.5",

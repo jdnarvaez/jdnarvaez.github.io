@@ -11,7 +11,7 @@ export const Tag = ({ children, background, color }: Props) => {
   return (
     <Chip
       className="flex items-center rounded-full px-3 uppercase text-[var(--bg-primary)] align-middle"
-      style={{ background, color }}
+      style={{ background, color, fontFamily: 'Space Mono' }}
       size="sm"
     >
       {children}
