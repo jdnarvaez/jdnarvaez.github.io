@@ -10,6 +10,16 @@ import oracleLogo from '../../assets/oracle.jpg';
 import patentedLogo from '../../assets/patented.jpg';
 import skyvue_1 from '../../assets/skyvue_1.png';
 import vannevar_logo from '../../assets/vannevar_logo.png';
+import vl10 from '../../assets/vl-10.jpeg';
+import vl11 from '../../assets/vl-11.jpeg';
+import vl2 from '../../assets/vl-2.jpeg';
+import vl3 from '../../assets/vl-3.jpeg';
+import vl4 from '../../assets/vl-4.jpeg';
+import vl5 from '../../assets/vl-5.jpeg';
+import vl6 from '../../assets/vl-6.jpeg';
+import vl7 from '../../assets/vl-7.jpeg';
+import vl8 from '../../assets/vl-8.jpeg';
+import vl9 from '../../assets/vl-9.jpeg';
 import washULogo from '../../assets/washu.png';
 import { TimelineEntry } from '../Timeline/Timeline';
 
@@ -80,6 +90,7 @@ export const experience: TimelineEntry[] = [
       'webrtc',
       'realtime',
     ],
+    images: [vl2, vl3, vl4, vl5, vl6, vl7, vl8, vl9, vl10, vl11]
   },
   {
     title: 'anedot',

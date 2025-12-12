@@ -81,7 +81,7 @@ const TimelineItem = ({
 
   return (
     <div
-      className="flex justify-start pb-10 md:pt-20 md:gap-10"
+      className={`flex justify-start md:pt-20 md:gap-10 ${!images?.length ? 'pb-10' : ''}`}
       style={{ contentVisibility: 'auto' }}
     >
       <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
