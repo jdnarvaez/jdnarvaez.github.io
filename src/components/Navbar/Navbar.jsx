@@ -52,7 +52,7 @@ export const NavItem = ({ children, idx, isActive, onClick }) => {
         <div className={styles.navItemContent}>
           <motion.div
             onClick={onClick}
-            className={`${styles.inner} text-sm md:text-xl lg:text-3xl`}
+            className={`${styles.inner} text-3xl`}
           >
             {children}
           </motion.div>

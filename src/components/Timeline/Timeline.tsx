@@ -93,7 +93,7 @@ const TimelineItem = ({
         </h3>
       </div>
 
-      <div className="relative pl-20 pr-4 md:pl-6 w-full">
+      <div className="relative pl-20 pr-4 md:ml-4 w-full">
         <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-foreground">
           {header}
         </h3>
