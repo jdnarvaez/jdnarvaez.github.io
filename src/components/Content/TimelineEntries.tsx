@@ -26,7 +26,7 @@ import { TimelineEntry } from '../Timeline/Timeline';
 export const experience: TimelineEntry[] = [
   {
     logo: vannevar_logo,
-    title: 'vannevar labs',
+    title: 'vannevar',
     years: `Sept . 2023  -  present`,
     positions: ['Senior Staff Engineer'],
     organizations: [
