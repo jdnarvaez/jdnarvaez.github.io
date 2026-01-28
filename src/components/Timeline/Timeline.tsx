@@ -60,7 +60,7 @@ const TimelineItem = ({
             </div>
           ) : null}
           {organizations?.length ? (
-            <div className="tracking-tight font-bold text-[2.5vmin] leading-[3vmin] uppercase opacity-[.6] pt-2">
+            <div className="font-bold text-[2.5vmin] leading-[3vmin] uppercase opacity-[.6] pt-2">
               <div className="flex flex-wrap gap-2">
                 {organizations.map(organization => (
                   <Tag

@@ -27,7 +27,7 @@ export const experience: TimelineEntry[] = [
   {
     logo: vannevar_logo,
     title: 'vannevar',
-    years: `Sept . 2023  -  present`,
+    years: `Sept . 2023  -  Jan . 2026`,
     positions: ['Senior Staff Engineer'],
     organizations: [
       'sensors',
@@ -38,6 +38,7 @@ export const experience: TimelineEntry[] = [
       'information environment',
     ],
     highlights: [
+      'Microfrontend Container & Framework',
       'TAK Server & Integration',
       'RF Detection Heatmap Visualizations',
       'Handheld RF Sensor w/ SDR | Touchscreen | Keyboard | LTE | GPS | TAK Capabilities',
@@ -89,6 +90,8 @@ export const experience: TimelineEntry[] = [
       'tak',
       'webrtc',
       'realtime',
+      'microservices',
+      'micro frontends',
     ],
     images: [vl2, vl3, vl4, vl5, vl6, vl7, vl8, vl9, vl10, vl11]
   },
