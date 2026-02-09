@@ -99,7 +99,7 @@ const TimelineItem = ({
         </h3>
         <div className="flex flex-col gap-8">
           <Tags tags={tags} />
-          <div
+          {highlights?.length ? <div
             className="rounded-[22px] p-6 bg-[var(--bg-primary)] flex flex-col gap-2 w-full"
             style={{ border: '1px solid #1e1e1e' }}
           >
@@ -108,7 +108,7 @@ const TimelineItem = ({
                 <div key={`highlight-${idx}`}>{highlight}</div>
               ))}
             </div>
-          </div>
+          </div> : null}
           {images?.length ? (
             <div className="rounded-3xl overflow-x-hidden w-full flex items-center justify-center">
               <Carousel slides={images.map(image => ({ src: image }))} />

@@ -8,6 +8,7 @@ import hudlLogo from '../../assets/hudl.jpg';
 import insights_module from '../../assets/insights_module.png';
 import oracleLogo from '../../assets/oracle.jpg';
 import patentedLogo from '../../assets/patented.jpg';
+import rrai_logo from '../../assets/rrai_logo.jpg';
 import skyvue_1 from '../../assets/skyvue_1.png';
 import vannevar_logo from '../../assets/vannevar_logo.png';
 import vl10 from '../../assets/vl-10.jpeg';
@@ -21,9 +22,27 @@ import vl7 from '../../assets/vl-7.jpeg';
 import vl8 from '../../assets/vl-8.jpeg';
 import vl9 from '../../assets/vl-9.jpeg';
 import washULogo from '../../assets/washu.png';
+
 import { TimelineEntry } from '../Timeline/Timeline';
 
-export const experience: TimelineEntry[] = [
+export const experience: TimelineEntry[] = [{
+  logo: rrai_logo,
+  title: 'forterra',
+  years: 'Feb . 2026 - present',
+  positions: ['Principal Engineer'],
+  organizations: ['c3', 'c3 integrations'],
+  // highlights: [''],
+  tags: [
+      'react',
+      'typescript',
+      'git',
+      'command',
+      'control',
+      'communications',
+      'c3',
+      'c2'
+    ],
+  },
   {
     logo: vannevar_logo,
     title: 'vannevar',
@@ -63,7 +82,6 @@ export const experience: TimelineEntry[] = [
       'Service Directory services + frontend / backend utilities for accessing that API',
       'Reverse Geocoder services'
     ],
-
     tags: [
       'react',
       'typescript',
