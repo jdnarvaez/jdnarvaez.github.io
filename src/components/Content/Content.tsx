@@ -21,7 +21,10 @@ export const Content = ({ onShow }: Props) => {
       ref={scrollContainerRef}
     >
       <ContentAnchor id={'intro'} onShow={onShow} />
-      <div className="flex items-center justify-center pt-16 px-16 mt-[15%]">
+      <div
+        className="flex items-center justify-center pt-16 px-16 mt-[15%]"
+        style={{ contentVisibility: 'auto' }}
+      >
         <Name />
       </div>
       <motion.div style={{ x: '75%', width: '60%' }} className="mt-[-5%]">

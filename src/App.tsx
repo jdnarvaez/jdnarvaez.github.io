@@ -4,10 +4,9 @@ import { useState } from 'react';
 import Favicon from 'react-favicon';
 import favicon from './assets/favicon.svg';
 import { Fonts, NavItem, Navbar } from './components';
-import { BackgroundBeams } from './components/BackgroundBeams/BackgroundBeams';
 import { Content } from './components/Content/Content';
 
-import "@fontsource/space-mono/700.css";
+import '@fontsource/space-mono/700.css';
 
 const items = ['intro', 'experience', 'education'];
 
@@ -45,7 +44,7 @@ export default function App() {
               </NavItem>
             ))}
           </Navbar>
-          <BackgroundBeams />
+          {/* <BackgroundBeams /> */}
           <Content onShow={id => setActiveNavItem(id)} />
         </motion.div>
       </AnimatePresence>
