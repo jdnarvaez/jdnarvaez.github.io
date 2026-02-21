@@ -25,14 +25,15 @@ import washULogo from '../../assets/washu.png';
 
 import { TimelineEntry } from '../Timeline/Timeline';
 
-export const experience: TimelineEntry[] = [{
-  logo: rrai_logo,
-  title: 'forterra',
-  years: 'Feb . 2026 - present',
-  positions: ['Principal Engineer'],
-  organizations: ['c3', 'c3 integrations'],
-  // highlights: [''],
-  tags: [
+export const experience: TimelineEntry[] = [
+  {
+    logo: rrai_logo,
+    title: 'forterra',
+    years: 'Feb . 2026 - present',
+    positions: ['Principal Engineer'],
+    organizations: ['c3', 'c3 integrations'],
+    highlights: ['mesh network control dashboard', 'Telegraf output sink'],
+    tags: [
       'react',
       'typescript',
       'git',
@@ -40,7 +41,11 @@ export const experience: TimelineEntry[] = [{
       'control',
       'communications',
       'c3',
-      'c2'
+      'c2',
+      'bazel',
+      'pkg',
+      'telegraf',
+      'influx',
     ],
   },
   {
@@ -80,7 +85,7 @@ export const experience: TimelineEntry[] = [{
       'Designed + developed Variety of visualizations and filtering for data modeling and analysis',
       'Reusable GH workflows',
       'Service Directory services + frontend / backend utilities for accessing that API',
-      'Reverse Geocoder services'
+      'Reverse Geocoder services',
     ],
     tags: [
       'react',
@@ -111,7 +116,7 @@ export const experience: TimelineEntry[] = [{
       'microservices',
       'micro frontends',
     ],
-    images: [vl2, vl3, vl4, vl5, vl6, vl7, vl8, vl9, vl10, vl11]
+    images: [vl2, vl3, vl4, vl5, vl6, vl7, vl8, vl9, vl10, vl11],
   },
   {
     title: 'anedot',
