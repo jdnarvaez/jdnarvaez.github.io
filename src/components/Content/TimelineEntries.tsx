@@ -32,7 +32,12 @@ export const experience: TimelineEntry[] = [
     years: 'Feb . 2026 - present',
     positions: ['Principal Engineer'],
     organizations: ['c3', 'c3 integrations'],
-    highlights: ['mesh network control dashboard', 'Telegraf output sink'],
+    highlights: [
+      'mesh network control dashboard',
+      'Telegraf output sink',
+      'RF Propagation Simulator',
+      'RF Signal Quality Visualizations',
+    ],
     tags: [
       'react',
       'typescript',
@@ -46,6 +51,9 @@ export const experience: TimelineEntry[] = [
       'pkg',
       'telegraf',
       'influx',
+      'agentic workflows',
+      'gis',
+      'OIDC',
     ],
   },
   {
