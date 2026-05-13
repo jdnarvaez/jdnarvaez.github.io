@@ -33,10 +33,11 @@ export const experience: TimelineEntry[] = [
     positions: ['Principal Engineer'],
     organizations: ['c3', 'c3 integrations'],
     highlights: [
-      'mesh network control dashboard',
+      'Mesh Radio Network Control Dashboard',
       'Telegraf output sink',
-      'RF Propagation Simulator',
+      'RF Signal Propagation Simulator',
       'RF Signal Quality Visualizations',
+      'QUIC based real-time vehicle monitoring application',
     ],
     tags: [
       'react',
@@ -54,6 +55,9 @@ export const experience: TimelineEntry[] = [
       'agentic workflows',
       'gis',
       'OIDC',
+      'QUIC',
+      'HTTP/3',
+      'protobuf',
     ],
   },
   {
