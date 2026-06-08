@@ -11,3 +11,9 @@ export const scrollSignal = {
   /** Smoothed scroll velocity (px/frame-ish), decays toward 0. */
   velocity: 0,
 };
+
+/**
+ * Normalized pointer position for camera parallax, -1..1 on each axis with 0 at
+ * the viewport center. Updated by a window pointermove listener in App.
+ */
+export const pointerSignal = { x: 0, y: 0 };

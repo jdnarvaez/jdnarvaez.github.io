@@ -1,9 +1,10 @@
 import { Button, Link, ScrollShadow } from '@heroui/react';
 import { motion, useReducedMotion } from 'motion/react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { TbArrowUp, TbBrandGithub, TbBrandLinkedin } from 'react-icons/tb';
 import { Hero } from './components/Hero';
 import { IntroSequence } from './components/IntroSequence';
+import { Radar } from './components/Radar';
 import { Overlay } from './components/hud/Overlay';
 import { StatusBar, type Section } from './components/hud/StatusBar';
 import { SectionLabel } from './components/SectionLabel';
@@ -12,6 +13,7 @@ import { education, experience, profile } from './data/resume';
 import { useScrollProgress } from './hooks/useScrollProgress';
 import { useScrollSpy } from './hooks/useScrollSpy';
 import { Background } from './three/Background';
+import { pointerSignal } from './three/scrollSignal';
 
 const SECTIONS: Section[] = [
   { id: 'intro', label: 'INTRO', index: '01' },
@@ -88,6 +90,17 @@ export default function App() {
   const animateReveal = useRef(!introDone).current;
 
   const handleIntroDone = useCallback(() => setIntroDone(true), []);
+
+  // Cursor parallax for the 3D scene.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const onMove = (e: PointerEvent) => {
+      pointerSignal.x = (e.clientX / window.innerWidth) * 2 - 1;
+      pointerSignal.y = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    return () => window.removeEventListener('pointermove', onMove);
+  }, [reducedMotion]);
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
@@ -167,6 +180,17 @@ export default function App() {
           <Footer />
         </motion.main>
       </ScrollShadow>
+
+      <Radar
+        sections={SECTIONS}
+        active={active}
+        progress={progress}
+        onJump={(id) =>
+          document
+            .getElementById(id)
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      />
     </>
   );
 }

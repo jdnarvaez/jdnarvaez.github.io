@@ -1,7 +1,7 @@
 import { useMemo, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { scrollSignal } from './scrollSignal';
+import { pointerSignal, scrollSignal } from './scrollSignal';
 import { introSignal } from './introSignal';
 
 /* ---------------------------------------------------------------- *
@@ -175,11 +175,18 @@ export function CityScene({ reducedMotion = false, theme = 'dark' }: Props) {
   const terrain = useTerrain(light);
   const city = useCity(light);
   const eased = useRef(0);
+  const pEase = useRef({ x: 0, y: 0 });
 
   useFrame((state) => {
     const t = reducedMotion ? 0 : state.clock.elapsedTime;
     eased.current += (scrollSignal.progress - eased.current) * 0.06;
     const p = eased.current;
+
+    // eased cursor parallax (disabled under reduced motion)
+    const par = reducedMotion ? 0 : 1;
+    const pe = pEase.current;
+    pe.x += (pointerSignal.x - pe.x) * 0.05;
+    pe.y += (pointerSignal.y - pe.y) * 0.05;
 
     if (fieldRef.current) {
       fieldRef.current.rotation.y = t * 0.025;
@@ -188,10 +195,11 @@ export function CityScene({ reducedMotion = false, theme = 'dark' }: Props) {
     // "enter the grid": when enter < 1, the camera is pulled far back + up and
     // rushes in to the normal pose as the intro completes.
     const out = 1 - introSignal.enter; // 0 normal, 1 fully pulled out
-    camera.position.x = Math.sin(t * 0.06) * 5;
-    camera.position.y = 13 - p * 6.5 + Math.sin(t * 0.45) * 0.3 + out * 16;
+    camera.position.x = Math.sin(t * 0.06) * 5 + pe.x * 6 * par;
+    camera.position.y =
+      13 - p * 6.5 + Math.sin(t * 0.45) * 0.3 + out * 16 - pe.y * 3 * par;
     camera.position.z = 44 - p * 20 + out * 48;
-    camera.lookAt(0, 4.5 + p * 1.5, 0);
+    camera.lookAt(pe.x * 2 * par, 4.5 + p * 1.5 + pe.y * 1.2 * par, 0);
   });
 
   const blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;

@@ -1,4 +1,6 @@
 import type { TimelineEntry } from '../data/resume';
+import { useInView } from '../hooks/useInView';
+import { DecodeText } from './DecodeText';
 import { Gallery } from './Gallery';
 import { CornerBrackets } from './hud/CornerBrackets';
 import { Tag } from './Tag';
@@ -11,9 +13,15 @@ type Props = {
 export function ExperienceItem({ entry, index }: Props) {
   const { logo, title, years, positions, organizations, highlights, tags, images } =
     entry;
+  const [ref, inView] = useInView<HTMLElement>({
+    rootMargin: '0px 0px -12% 0px',
+  });
 
   return (
-    <article className="hud-panel group relative transition-colors duration-300 hover:border-[color:var(--accent)]/45">
+    <article
+      ref={ref}
+      className="hud-panel group relative transition-colors duration-300 hover:border-[color:var(--accent)]/45"
+    >
       <CornerBrackets
         size={11}
         inset={-1}
@@ -27,7 +35,7 @@ export function ExperienceItem({ entry, index }: Props) {
           <span className="hud-label text-[var(--accent)]">{index}</span>
           <span className="h-3.5 w-px bg-[var(--separator)]" />
           <h3 className="truncate font-display text-lg font-extrabold uppercase tracking-[-0.11em] text-[var(--foreground)] sm:text-xl pr-1">
-            {title}
+            <DecodeText text={title} play={inView} />
           </h3>
         </div>
         {years && (
@@ -94,8 +102,10 @@ export function ExperienceItem({ entry, index }: Props) {
           {/* tags */}
           {tags && tags.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-1.5">
-              {tags.map((t) => (
-                <Tag key={t}>{t}</Tag>
+              {tags.map((t, i) => (
+                <Tag key={t}>
+                  <DecodeText text={t} play={inView} delay={i * 30} />
+                </Tag>
               ))}
             </div>
           )}

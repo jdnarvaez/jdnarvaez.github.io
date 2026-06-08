@@ -302,6 +302,18 @@ body {
   .hud-blink {
     animation: hud-blink 2.4s steps(1) infinite;
   }
+
+  /* Rotating radar sweep */
+  .radar-sweep {
+    transform-origin: 50px 50px;
+    animation: radar-spin 4s linear infinite;
+  }
+}
+
+@keyframes radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Animated dashed marquee border used on active markers */
@@ -328,7 +340,8 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .hud-blink {
+  .hud-blink,
+  .radar-sweep {
     animation: none;
   }
 }

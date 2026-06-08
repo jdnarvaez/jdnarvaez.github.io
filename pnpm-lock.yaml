@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@fontsource/space-grotesk':
-        specifier: ^5.2.10
-        version: 5.2.10
+      '@fontsource-variable/unbounded':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/space-mono':
         specifier: ^5.2.9
         version: 5.2.9
@@ -151,8 +151,8 @@ packages:
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@fontsource/space-grotesk@5.2.10':
-    resolution: {integrity: sha512-XNXEbT74OIITPqw2H6HXwPDp85fy43uxfBwFR5PU+9sLnjuLj12KlhVM9nZVN6q6dlKjkuN8JisW/OBxwxgUew==}
+  '@fontsource-variable/unbounded@5.2.8':
+    resolution: {integrity: sha512-DWC/HEdNNbjMH6ngeeCAPExKMsedoY+pV3ZnRXzFcAzXuGHB6dEwsXNVQ4fiuuYMGguq9TSAEUat4Oy5prdwWQ==}
 
   '@fontsource/space-mono@5.2.9':
     resolution: {integrity: sha512-b61faFOHEISQ/pD25G+cfGY9o/WW6lRv6hBQQfpWvEJ4y1V+S4gmth95EVyBE2VL3qDYHeVQ8nBzrplzdXTDDg==}
@@ -2260,7 +2260,7 @@ snapshots:
 
   '@eslint/js@8.57.1': {}
 
-  '@fontsource/space-grotesk@5.2.10': {}
+  '@fontsource-variable/unbounded@5.2.8': {}
 
   '@fontsource/space-mono@5.2.9': {}
 

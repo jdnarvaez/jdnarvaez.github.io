@@ -2,8 +2,8 @@ import { Link } from '@heroui/react';
 import { TbArrowDown, TbBrandGithub, TbBrandLinkedin, TbFileText } from 'react-icons/tb';
 import { profile } from '../data/resume';
 import { cn } from '../utils/cn';
-import { CornerBrackets } from './hud/CornerBrackets';
 import { HeroName } from './HeroName';
+import { CornerBrackets } from './hud/CornerBrackets';
 import { PixelPortrait } from './PixelPortrait';
 import { RoleCycler } from './RoleCycler';
 
@@ -97,7 +97,7 @@ export function Hero({ theme, reveal }: { theme: Theme; reveal: boolean }) {
               ▚ PORTFOLIO
             </span>
             <span className="hidden h-px w-12 bg-[var(--separator)] sm:block" />
-            <span className="hud-label">{profile.location}</span>
+            <span className="hud-label"></span>
           </div>
 
           <HeroName reveal={reveal} />
