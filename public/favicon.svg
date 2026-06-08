@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- off-black HUD tile -->
+  <rect width="100" height="100" rx="14" fill="#0a0908" />
+  <!-- faint neon-orange frame -->
+  <rect x="4.5" y="4.5" width="91" height="91" rx="10"
+        fill="none" stroke="#ff6a1a" stroke-opacity="0.45" stroke-width="2.5" />
+  <!-- accent dots (echo of the original monogram), neon orange -->
+  <circle cx="16" cy="16" r="4" fill="#ff6a1a" />
+  <circle cx="84" cy="84" r="4" fill="#ff6a1a" />
+  <!-- initials in a monospace face, neon orange -->
+  <text x="50" y="53" text-anchor="middle" dominant-baseline="central"
+        font-family="'Space Mono', ui-monospace, 'SFMono-Regular', Menlo, 'Courier New', monospace"
+        font-size="37" font-weight="700" letter-spacing="-0.5" fill="#ff6a1a">JDN</text>
+</svg>

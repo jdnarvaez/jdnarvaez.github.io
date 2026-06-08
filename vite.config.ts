@@ -1,18 +1,17 @@
-import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-import tailwindcss from 'tailwindcss';
-
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
+  // User/organization GitHub Pages site (jdnarvaez.github.io) is served from the
+  // domain root, so the base path stays "/".
+  base: '/',
   plugins: [react(), tailwindcss()],
-  esbuild: {
-    jsxInject: `import React from 'react'`, // automatically import React in jsx files
-  },
   resolve: {
     alias: {
-      // for TypeScript path alias import like : @/x/y/z
+      // TypeScript path alias: @/x/y/z -> src/x/y/z
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
@@ -23,12 +22,5 @@ export default defineConfig({
   server: {
     port: 8082,
     host: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-        secure: false,
-        rewrite: path => path.replace(/^\/api/, ''),
-      },
-    },
   },
 });
