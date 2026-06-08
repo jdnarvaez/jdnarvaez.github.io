@@ -73,7 +73,8 @@ export const experience: TimelineEntry[] = [
       'QUIC based real-time vehicle monitoring application',
       'Real-time Modular Command + Control Application Platform',
       'Decoding + Replay pipeline for vehicle telemetry',
-      'UI Library based on extending HeroUI v3'
+      'UI Library based on extending HeroUI v3',
+      'YOLO based object detection model to run on video feeds in realtime in the browser'
     ],
     tags: [
       'react',
@@ -94,6 +95,7 @@ export const experience: TimelineEntry[] = [
       'QUIC',
       'HTTP/3',
       'protobuf',
+      'YOLO'
     ],
   },
   {
