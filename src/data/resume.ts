@@ -61,7 +61,7 @@ export const experience: TimelineEntry[] = [
   {
     logo: rraiLogo,
     title: 'forterra',
-    years: 'Feb . 2026 - present',
+    years: 'Feb 2026 - present',
     positions: ['Principal Engineer'],
     organizations: ['c3', 'c3 integrations'],
     highlights: [
@@ -78,12 +78,16 @@ export const experience: TimelineEntry[] = [
       'Multi-window React context / portal framework',
       '3D tile overlays + navigation',
       'Login experience + tenant management',
-      'Red-light capable visualization filters'
+      'Red-light capable visualization filters',
+      'OTel proxy + pipelines for logs / metrics / observability',
+      'GitLab CI Pipelines',
+      'Frontend / Backend Shared Libraries'
     ],
     tags: [
       'react',
       'typescript',
       'git',
+      'gitlab',
       'command',
       'control',
       'communications',
@@ -101,13 +105,14 @@ export const experience: TimelineEntry[] = [
       'protobuf',
       'YOLO',
       'WEBGL',
-      'deck.gl'
+      'deck.gl',
+      'otel'
     ],
   },
   {
     logo: vannevarLogo,
     title: 'vannevar',
-    years: `Sept . 2023  -  Jan . 2026`,
+    years: `Sept 2023  -  Jan 2026`,
     positions: ['Senior Staff Engineer'],
     organizations: [
       'sensors',
@@ -176,7 +181,7 @@ export const experience: TimelineEntry[] = [
   },
   {
     title: 'anedot',
-    years: `feb . 2022  -  sept . 2023`,
+    years: `feb 2022  -  sept 2023`,
     logo: anedotLogo,
     positions: [
       'Director of Engineering',
@@ -210,7 +215,7 @@ export const experience: TimelineEntry[] = [
   },
   {
     title: 'hudl',
-    years: 'oct . 2021  -  feb . 2022',
+    years: 'oct 2021  -  feb 2022',
     logo: hudlLogo,
     positions: ['Lead Engineer'],
     organizations: ['Hudl Beta'],
@@ -240,7 +245,7 @@ export const experience: TimelineEntry[] = [
   },
   {
     title: 'oracle',
-    years: 'oct . 2017  -  oct . 2021',
+    years: 'oct 2017  -  oct 2021',
     logo: oracleLogo,
     positions: ['Associate Principal Engineer', 'Senior Software Architect'],
     organizations: ['Clinical Imaging'],
@@ -289,7 +294,7 @@ export const experience: TimelineEntry[] = [
   },
   {
     title: 'apple',
-    years: 'jan . 2014  -  oct . 2017',
+    years: 'jan 2014  -  oct 2017',
     logo: appleLogo,
     positions: ['POI Engineer'],
     organizations: ['Maps'],
@@ -320,7 +325,7 @@ export const experience: TimelineEntry[] = [
   },
   {
     title: 'oracle',
-    years: 'june . 2007  -  jan . 2014',
+    years: 'june 2007  -  jan 2014',
     logo: oracleLogo,
     positions: [
       'Software Architect',
@@ -409,7 +414,7 @@ export const experience: TimelineEntry[] = [
 export const education: TimelineEntry[] = [
   {
     title: 'washington university in st. louis',
-    years: 'sept . 2005  -  may . 2007',
+    years: 'sept 2005  -  may 2007',
     logo: washULogo,
     positions: ['m.s.e.e.'],
     highlights: [
@@ -419,7 +424,7 @@ export const education: TimelineEntry[] = [
   },
   {
     title: 'washington university in st. louis',
-    years: 'sept . 2002  -  may . 2006',
+    years: 'sept 2002  -  may 2006',
     logo: washULogo,
     positions: ['b.s.e.e.'],
     highlights: [
