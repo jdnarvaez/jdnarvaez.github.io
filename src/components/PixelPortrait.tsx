@@ -10,16 +10,13 @@ type Props = {
   /** Output aspect ratio (width / height). */
   aspect?: number;
   mode?: 'dots' | 'ascii';
-  theme?: 'light' | 'dark';
   className?: string;
 };
 
-// Orange ramps: shadow -> highlight. Dark uses bright neon; light uses burnt
-// orange so the dots read on the pale badge.
-const RAMP: Record<'light' | 'dark', { cool: RGB; hot: RGB }> = {
-  dark: { cool: [255, 106, 26], hot: [255, 201, 138] },
-  light: { cool: [138, 60, 16], hot: [196, 96, 38] },
-};
+// Neon-orange ramp: shadow -> highlight. Always rendered on a dark backing,
+// so the colour is theme-independent.
+const COOL: RGB = [255, 106, 26];
+const HOT: RGB = [255, 201, 138];
 // dark -> light
 const ASCII_RAMP = ' .,:;irsXA253hMHGS#9B&@';
 
@@ -35,7 +32,6 @@ export function PixelPortrait({
   columns = 48,
   aspect = 3 / 4,
   mode = 'dots',
-  theme = 'dark',
   className,
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -44,7 +40,6 @@ export function PixelPortrait({
     const canvas = canvasRef.current;
     if (!canvas) return;
     let cancelled = false;
-    const { cool: COOL, hot: HOT } = RAMP[theme];
 
     const img = new Image();
     img.decoding = 'async';
@@ -142,7 +137,7 @@ export function PixelPortrait({
     return () => {
       cancelled = true;
     };
-  }, [src, columns, aspect, mode, theme]);
+  }, [src, columns, aspect, mode]);
 
   return (
     <canvas

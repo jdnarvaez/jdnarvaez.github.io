@@ -7,8 +7,6 @@ import { CornerBrackets } from './hud/CornerBrackets';
 import { PixelPortrait } from './PixelPortrait';
 import { RoleCycler } from './RoleCycler';
 
-type Theme = 'light' | 'dark';
-
 const actionBase =
   'pointer-events-auto inline-flex items-center gap-2 border px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.16em] transition-colors duration-200';
 
@@ -26,7 +24,7 @@ function Barcode({ className }: { className?: string }) {
   );
 }
 
-function IDBadge({ theme }: { theme: Theme }) {
+function IDBadge() {
   return (
     <div className="hud-panel relative mx-auto w-full max-w-sm">
       <CornerBrackets size={14} inset={-1} color="var(--accent)" />
@@ -43,7 +41,7 @@ function IDBadge({ theme }: { theme: Theme }) {
             clipPath:
               'polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))',
             background:
-              'radial-gradient(125% 90% at 50% 32%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 72%), var(--background)',
+              'radial-gradient(125% 90% at 50% 32%, rgba(255,106,26,0.18), transparent 72%), #0b0a0a',
           }}
         >
           <PixelPortrait
@@ -51,7 +49,6 @@ function IDBadge({ theme }: { theme: Theme }) {
             columns={44}
             aspect={3 / 4}
             mode="dots"
-            theme={theme}
             className="absolute inset-0"
           />
           <span className="scanlines absolute inset-0 opacity-40" />
@@ -83,7 +80,7 @@ function IDBadge({ theme }: { theme: Theme }) {
   );
 }
 
-export function Hero({ theme, reveal }: { theme: Theme; reveal: boolean }) {
+export function Hero({ reveal }: { reveal: boolean }) {
   return (
     <section
       id="intro"
@@ -156,7 +153,7 @@ export function Hero({ theme, reveal }: { theme: Theme; reveal: boolean }) {
         </div>
 
         {/* ID badge */}
-        <IDBadge theme={theme} />
+        <IDBadge />
       </div>
 
       {/* scroll hint */}

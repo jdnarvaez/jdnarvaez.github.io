@@ -155,7 +155,7 @@ export default function App() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
           <span id="top" />
-          <Hero theme={theme} reveal={introDone} />
+          <Hero reveal={introDone} />
 
           <section className="mt-8">
             <SectionLabel

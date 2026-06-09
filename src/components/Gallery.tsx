@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useId, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ScrollShadow } from '@heroui/react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, LayoutGroup, motion } from 'motion/react';
 import { TbChevronLeft, TbChevronRight, TbX } from 'react-icons/tb';
-import { CornerBrackets } from './hud/CornerBrackets';
 
 type Props = {
   images: string[];
@@ -11,11 +10,14 @@ type Props = {
 };
 
 /**
- * Horizontal row of HUD-framed, duotone screenshot thumbnails. Click opens a
- * full-colour lightbox with keyboard navigation.
+ * HUD thumbnail row + lightbox. Opening shares a `layoutId` with the clicked
+ * thumbnail (app-store style zoom-morph). Inside, all images live on one track
+ * that translates by index, so prev/next slide left/right.
  */
 export function Gallery({ images, label }: Props) {
   const [open, setOpen] = useState<number | null>(null);
+  const uid = useId();
+  const lid = (i: number) => `${uid}-frame-${i}`;
 
   const close = useCallback(() => setOpen(null), []);
   const step = useCallback(
@@ -38,7 +40,7 @@ export function Gallery({ images, label }: Props) {
   }, [open, close, step]);
 
   return (
-    <div>
+    <LayoutGroup>
       <div className="mb-2 flex items-center gap-2">
         <span className="hud-label text-[9px]">SURVEILLANCE //</span>
         <span className="hud-label text-[9px] text-[var(--accent)]">
@@ -62,11 +64,13 @@ export function Gallery({ images, label }: Props) {
             }}
             aria-label={`${label} — frame ${i + 1}`}
           >
-            <img
+            <motion.img
+              layoutId={lid(i)}
               src={src}
               alt={`${label} screenshot ${i + 1}`}
               loading="lazy"
               className="size-full object-cover"
+              style={{ opacity: open === null ? 1 : 0 }}
             />
             <span className="absolute left-1.5 top-1.5 bg-[color:var(--background)]/70 px-1 py-0.5 hud-label text-[8px] text-[var(--accent)]">
               {String(i + 1).padStart(2, '0')}
@@ -79,75 +83,87 @@ export function Gallery({ images, label }: Props) {
         <AnimatePresence>
           {open !== null && (
             <motion.div
-              className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
-            onClick={close}
-            style={{
-              background:
-                'color-mix(in oklab, var(--background) 86%, transparent)',
-              backdropFilter: 'blur(8px)',
-            }}
-          >
-            <div className="absolute left-5 top-5 flex items-center gap-3">
-              <span className="hud-label text-[var(--accent)]">{label}</span>
-              <span className="hud-label">
-                {String((open ?? 0) + 1).padStart(2, '0')} /{' '}
-                {String(images.length).padStart(2, '0')}
-              </span>
-            </div>
-
-            <button
+              key="lightbox"
+              className="fixed inset-0 z-[70] overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
               onClick={close}
-              className="pointer-events-auto absolute right-5 top-5 grid size-9 place-items-center border border-[var(--border)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
-              aria-label="Close"
-            >
-              <TbX size={18} />
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                step(-1);
+              style={{
+                background:
+                  'color-mix(in oklab, var(--background) 86%, transparent)',
+                backdropFilter: 'blur(8px)',
               }}
-              className="pointer-events-auto absolute left-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center border border-[var(--border)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
-              aria-label="Previous"
             >
-              <TbChevronLeft size={20} />
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                step(1);
-              }}
-              className="pointer-events-auto absolute right-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center border border-[var(--border)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
-              aria-label="Next"
-            >
-              <TbChevronRight size={20} />
-            </button>
+              {/* sliding track — one image per viewport, translated by index */}
+              <motion.div
+                className="flex h-full w-full"
+                initial={false}
+                animate={{ x: `${open * -100}vw` }}
+                transition={{ type: 'spring', stiffness: 320, damping: 36 }}
+              >
+                {images.map((src, i) => (
+                  <div
+                    key={src}
+                    className="flex h-full w-full shrink-0 items-center justify-center p-4 sm:p-12"
+                  >
+                    <motion.img
+                      layoutId={lid(i)}
+                      src={src}
+                      alt={`${label} screenshot ${i + 1}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="max-h-[82vh] max-w-[88vw] cursor-default border border-[var(--border)] object-contain"
+                      transition={{
+                        layout: { type: 'spring', stiffness: 240, damping: 30 },
+                      }}
+                    />
+                  </div>
+                ))}
+              </motion.div>
 
-            <motion.div
-              key={open}
-              className="relative max-h-full max-w-4xl"
-              initial={{ scale: 0.97, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <CornerBrackets size={18} inset={-6} color="var(--accent)" />
-              <img
-                src={images[open]}
-                alt={`${label} screenshot ${open + 1}`}
-                className="max-h-[80vh] w-auto border border-[var(--border)] object-contain"
-              />
+              {/* HUD chrome */}
+              <div className="pointer-events-none absolute left-5 top-5 flex items-center gap-3">
+                <span className="hud-label text-[var(--accent)]">{label}</span>
+                <span className="hud-label">
+                  {String(open + 1).padStart(2, '0')} /{' '}
+                  {String(images.length).padStart(2, '0')}
+                </span>
+              </div>
+
+              <button
+                onClick={close}
+                className="absolute right-5 top-5 grid size-9 place-items-center border border-[var(--border)] bg-[color:var(--background)]/40 text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                aria-label="Close"
+              >
+                <TbX size={18} />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  step(-1);
+                }}
+                className="absolute left-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center border border-[var(--border)] bg-[color:var(--background)]/40 text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                aria-label="Previous"
+              >
+                <TbChevronLeft size={20} />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  step(1);
+                }}
+                className="absolute right-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center border border-[var(--border)] bg-[color:var(--background)]/40 text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                aria-label="Next"
+              >
+                <TbChevronRight size={20} />
+              </button>
             </motion.div>
-          </motion.div>
           )}
         </AnimatePresence>,
         document.body
       )}
-    </div>
+    </LayoutGroup>
   );
 }
