@@ -1,132 +1,347 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ------------------------------------------------------------------ *
+ * Juan Narváez — portfolio
+ * Tailwind v4 + HeroUI v3 + custom "GRID" cyberpunk-HUD theme.
+ * Import order matters: tailwindcss first, then HeroUI styles.
+ * ------------------------------------------------------------------ */
+@import 'tailwindcss';
+@import '@heroui/styles';
 
-:root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: (--blue);
-  --secondary: #6c757d;
-  --success: var(--teal);
-  --info: #17a2b8;
-  --warning: var(--orange);
-  --danger: var(--pink);
-  --light: #f8f9fa;
-  --dark: #343a40;
+/* Fonts (self-hosted via @fontsource) */
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/400-italic.css';
+@import '@fontsource/space-mono/700.css';
+/* Unbounded (variable, 200–900) — rounded geometric display / heading face */
+@import '@fontsource-variable/unbounded';
 
-  --low: #32ccbc;
-  --medium: #f8d800;
-  --high: #f6416c;
-  --very-high: #8c1bab;
-  --severe: #513162;
-  --volt: #ceff00;
+/* Drive HeroUI's `dark:` + dark theme off the .dark class on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --primary-text: rgb(240, 240, 210);
-  --bg-primary: rgb(5, 10, 15);
-  --bg-secondary: rgb(20, 25, 35);
+/* ------------------------------------------------------------------ *
+ * Design tokens exposed to Tailwind utilities (font-*, ease-*, etc.)
+ * ------------------------------------------------------------------ */
+@theme {
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+  --font-sans: 'Unbounded Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Unbounded Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* HUD signal colors mapped to Tailwind utilities (text-grid-line, etc.) */
+  --color-grid-line: color-mix(in oklab, var(--foreground) 12%, transparent);
+  --color-grid-line-strong: color-mix(in oklab, var(--foreground) 22%, transparent);
+  --color-accent-dim: color-mix(in oklab, var(--accent) 55%, transparent);
+
+  --ease-hud: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.text-foreground {
-  color: var(--primary-text);
-}
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* ------------------------------------------------------------------ *
+ * The GRID theme. Unlayered so these source vars win over HeroUI's
+ * layered .dark defaults; all of HeroUI's calculated colors
+ * (hover / soft / borders) derive from these via color-mix().
+ * Off-black background · neon-orange accent · warm off-white fg.
+ * ------------------------------------------------------------------ */
+:root,
+.light,
+[data-theme='light'] {
+  color-scheme: light;
+  /* GRID — light "blueprint" variant: warm paper bg, burnt-orange accent */
+
+  /* Base */
+  --background: oklch(0.955 0.008 78);
+  --foreground: oklch(0.225 0.012 60);
+
+  /* Surfaces */
+  --surface: oklch(0.995 0.004 85);
+  --surface-foreground: var(--foreground);
+  --surface-secondary: oklch(0.93 0.006 80);
+  --surface-tertiary: oklch(0.9 0.006 80);
+
+  /* Overlays */
+  --overlay: oklch(0.99 0.004 85);
+  --overlay-foreground: var(--foreground);
+
+  /* Muted / secondary text */
+  --muted: oklch(0.46 0.012 60);
+
+  /* Neutral component color */
+  --default: oklch(0.91 0.005 80);
+  --default-foreground: var(--foreground);
+
+  /* THE accent — burnt orange (keeps the brand hue, legible on light) */
+  --accent: oklch(0.585 0.2 41);
+  --accent-foreground: oklch(0.985 0.005 85);
+
+  /* Status colors */
+  --success: oklch(0.6 0.15 155);
+  --success-foreground: oklch(0.985 0.005 85);
+  --warning: oklch(0.7 0.15 72);
+  --warning-foreground: oklch(0.225 0.012 60);
+  --danger: oklch(0.57 0.2 25);
+  --danger-foreground: oklch(0.985 0.005 85);
+
+  /* Form fields */
+  --field-background: oklch(1 0 0);
+  --field-foreground: var(--foreground);
+  --field-border: color-mix(in oklab, var(--foreground) 18%, transparent);
+
+  /* Segmented controls */
+  --segment: oklch(0.88 0.005 80);
+  --segment-foreground: var(--foreground);
+
+  /* Lines */
+  --border: color-mix(in oklab, var(--foreground) 18%, transparent);
+  --separator: color-mix(in oklab, var(--foreground) 12%, transparent);
+  --focus: var(--accent);
+  --link: var(--foreground);
+
+  --radius: 0px;
+  --backdrop: color-mix(in oklab, var(--background) 70%, transparent);
+
+  --scrollbar-thumb: color-mix(in oklab, var(--accent) 42%, transparent);
+  --scrollbar-track: transparent;
 }
 
-* {
-  margin: 0;
+.dark,
+[data-theme='dark'] {
+  color-scheme: dark;
+  /* Base */
+  --background: oklch(0.15 0.006 56);
+  --foreground: oklch(0.928 0.009 83);
+
+  /* Surfaces (cards, accordions) — warm near-black, a step above bg */
+  --surface: oklch(0.202 0.006 60);
+  --surface-foreground: var(--foreground);
+  --surface-secondary: oklch(0.235 0.006 60);
+  --surface-tertiary: oklch(0.265 0.006 60);
+
+  /* Overlays (tooltips, popovers, menus) */
+  --overlay: oklch(0.218 0.006 60);
+  --overlay-foreground: var(--foreground);
+
+  /* Muted / secondary text — warm gray */
+  --muted: oklch(0.64 0.012 72);
+
+  /* Neutral component color */
+  --default: oklch(0.262 0.006 60);
+  --default-foreground: var(--foreground);
+
+  /* THE accent — bright neon orange */
+  --accent: oklch(0.72 0.2 46);
+  --accent-foreground: oklch(0.15 0.006 56);
+
+  /* Status colors — kept cyber-bright */
+  --success: oklch(0.83 0.16 158);
+  --success-foreground: oklch(0.15 0.006 56);
+  --warning: oklch(0.82 0.15 78);
+  --warning-foreground: oklch(0.15 0.006 56);
+  --danger: oklch(0.63 0.22 22);
+  --danger-foreground: oklch(0.96 0.01 80);
+
+  /* Form fields */
+  --field-background: oklch(0.2 0.006 60);
+  --field-foreground: var(--foreground);
+  --field-border: color-mix(in oklab, var(--foreground) 14%, transparent);
+
+  /* Segmented controls */
+  --segment: oklch(0.3 0.006 60);
+  --segment-foreground: var(--foreground);
+
+  /* Lines */
+  --border: color-mix(in oklab, var(--foreground) 13%, transparent);
+  --separator: color-mix(in oklab, var(--foreground) 9%, transparent);
+  --focus: var(--accent);
+  --link: var(--foreground);
+
+  /* Sharp HUD corners by default; character comes from clip-paths + brackets */
+  --radius: 0px;
+
+  --backdrop: color-mix(in oklab, var(--background) 78%, transparent);
+
+  /* Faint orange scrollbar */
+  --scrollbar-thumb: color-mix(in oklab, var(--accent) 30%, transparent);
+  --scrollbar-track: transparent;
 }
 
+/* ------------------------------------------------------------------ *
+ * Base element styling
+ * ------------------------------------------------------------------ */
 html {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: var(--font-mono);
   font-size: 16px;
-}
-
-html,
-body {
-  display: flex;
-  margin: 0;
-  overflow-x: hidden;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-primary);
-  background-image: linear-gradient(
-    315deg,
-    var(--bg-secondary) 0%,
-    var(--bg-primary) 74%
-  );
-  /* overscroll-behavior-y: none; */
-}
-
-body {
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  background-color: var(--background);
 }
 
-::-webkit-scrollbar {
-  background-color: transparent;
-  height: 8px;
-  width: 8px;
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: var(--font-mono);
+  /* Reduce motion when the user asks for it (handled per-component too) */
+  overflow-x: hidden;
 }
 
-::-webkit-scrollbar-corner {
-  background: transparent;
+::selection {
+  background: color-mix(in oklab, var(--accent) 32%, transparent);
+  color: var(--foreground);
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--bg-secondary);
-  border-radius: 16px;
-  opacity: 0.5;
+/* ------------------------------------------------------------------ *
+ * HUD utility classes — in the `components` layer so Tailwind utilities
+ * (fixed, relative, border-*, text-[...]) reliably override them.
+ * ------------------------------------------------------------------ */
+@layer components {
+  /* Display / heading family helper */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Small uppercase mono metadata label, e.g. "EST. 2007 // PRINCIPAL ENGINEER" */
+  .hud-label {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.6875rem;
+    line-height: 1;
+    color: var(--muted);
+  }
+
+  /* Neon glow helpers */
+  .text-glow {
+    text-shadow:
+      0 0 8px color-mix(in oklab, var(--accent) 55%, transparent),
+      0 0 24px color-mix(in oklab, var(--accent) 28%, transparent);
+  }
+  .box-glow {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--accent) 35%, transparent),
+      0 0 24px -6px color-mix(in oklab, var(--accent) 45%, transparent);
+  }
+
+  /* Notched / clipped corners (the "data panel" silhouette) */
+  .clip-notch {
+    clip-path: polygon(
+      0 var(--notch, 14px),
+      var(--notch, 14px) 0,
+      100% 0,
+      100% calc(100% - var(--notch, 14px)),
+      calc(100% - var(--notch, 14px)) 100%,
+      0 100%
+    );
+  }
+  .clip-notch-all {
+    clip-path: polygon(
+      0 var(--notch, 12px),
+      var(--notch, 12px) 0,
+      calc(100% - var(--notch, 12px)) 0,
+      100% var(--notch, 12px),
+      100% calc(100% - var(--notch, 12px)),
+      calc(100% - var(--notch, 12px)) 100%,
+      var(--notch, 12px) 100%,
+      0 calc(100% - var(--notch, 12px))
+    );
+  }
+
+  /* Translucent glass data-panel: shows the 3D city faintly behind content */
+  .hud-panel {
+    position: relative;
+    background: color-mix(in oklab, var(--surface) 62%, transparent);
+    backdrop-filter: blur(10px) saturate(1.1);
+    -webkit-backdrop-filter: blur(10px) saturate(1.1);
+    border: 1px solid var(--border);
+  }
+
+  /* Themed scrollbar for in-page scroll areas (galleries): clear gutter,
+     square neon-orange thumb. */
+  .hud-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--accent) 55%, transparent)
+      transparent;
+  }
+  .hud-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .hud-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .hud-scroll::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--accent) 55%, transparent);
+    border-radius: 0;
+  }
+  .hud-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+  .hud-scroll::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Scanline overlay (apply to a full-bleed absolutely-positioned element) */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--foreground) 4%, transparent) 0px,
+      color-mix(in oklab, var(--foreground) 4%, transparent) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    mix-blend-mode: overlay;
+  }
+
+  /* Duotone HUD treatment for raster screenshots */
+  .hud-duotone {
+    filter: grayscale(1) contrast(1.05) brightness(0.85);
+    mix-blend-mode: luminosity;
+  }
+
+  .hud-blink {
+    animation: hud-blink 2.4s steps(1) infinite;
+  }
+
+  /* Rotating radar sweep */
+  .radar-sweep {
+    transform-origin: 50px 50px;
+    animation: radar-spin 4s linear infinite;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+@keyframes radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
+/* Animated dashed marquee border used on active markers */
+@keyframes hud-dash {
+  to {
+    background-position: 200% 0, 0 -200%, -200% 100%, 100% 200%;
+  }
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
+/* Slow blink for "live" indicators */
+@keyframes hud-blink {
+  0%,
+  62% {
+    opacity: 1;
+  }
+  63%,
+  100% {
+    opacity: 0.25;
+  }
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-#root {
-  isolation: isolate;
-  display: flex;
-  flex-grow: 1;
-  height: 100%;
-  width: 100%;
+/* Reduced motion: kill smooth scroll + decorative animations */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hud-blink,
+  .radar-sweep {
+    animation: none;
+  }
 }

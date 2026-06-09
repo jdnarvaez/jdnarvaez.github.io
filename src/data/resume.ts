@@ -1,0 +1,433 @@
+/* ------------------------------------------------------------------ *
+ * Résumé data — single source of truth
+ * ------------------------------------------------------------------ */
+
+import anedotLogo from '../assets/anedot.png';
+import appleLogo from '../assets/apple.jpg';
+import avatar from '../assets/avatar.png';
+import betaReports from '../assets/beta-reports.png';
+import cernerCardio from '../assets/cerner_cardio.png';
+import flexible1 from '../assets/flexible1.png';
+import hudlLogo from '../assets/hudl.jpg';
+import insightsModule from '../assets/insights_module.png';
+import resumePdf from '../assets/jdnarvaez_resume.pdf';
+import oracleLogo from '../assets/oracle.jpg';
+import patentedLogo from '../assets/patented.jpg';
+import portrait from '../assets/portrait.jpeg';
+import rraiLogo from '../assets/rrai_logo.jpg';
+import skyvue1 from '../assets/skyvue_1.png';
+import vannevarLogo from '../assets/vannevar_logo.png';
+import vl10 from '../assets/vl-10.jpeg';
+import vl11 from '../assets/vl-11.jpeg';
+import vl2 from '../assets/vl-2.jpeg';
+import vl3 from '../assets/vl-3.jpeg';
+import vl4 from '../assets/vl-4.jpeg';
+import vl5 from '../assets/vl-5.jpeg';
+import vl6 from '../assets/vl-6.jpeg';
+import vl7 from '../assets/vl-7.jpeg';
+import vl8 from '../assets/vl-8.jpeg';
+import vl9 from '../assets/vl-9.jpeg';
+import washULogo from '../assets/washu.png';
+
+export type TimelineEntry = {
+  logo: string;
+  title: string;
+  years?: string;
+  positions?: string[];
+  organizations?: string[];
+  highlights: string[];
+  tags?: string[];
+  images?: string[];
+};
+
+export const profile = {
+  name: 'Juan Narváez',
+  handle: 'jdnarvaez',
+  roles: ['DEVELOPER', 'ENGINEER', 'DESIGNER', 'ILLUSTRATOR'],
+  tagline: 'Developer + Designer',
+  location: 'SOUTHWESTERN UTAH',
+  intro:
+    "I'm Juan Narváez, and I enjoy designing and writing software (amongst other things). I've spent most of my career working on frontend applications in the realm of visualization and image processing (mostly medical imaging). I've also written a variety of backend services for processing + streaming image data, as well as the corresponding frontend components to take advantage of those services.",
+  avatar,
+  portrait,
+  resume: resumePdf,
+  links: {
+    github: 'https://github.com/jdnarvaez',
+    linkedin: 'https://linkedin.com/in/jdnarvaez',
+  },
+} as const;
+
+export const experience: TimelineEntry[] = [
+  {
+    logo: rraiLogo,
+    title: 'forterra',
+    years: 'Feb . 2026 - present',
+    positions: ['Principal Engineer'],
+    organizations: ['c3', 'c3 integrations'],
+    highlights: [
+      'Mesh Radio Network Control Dashboard',
+      'Telegraf output sink',
+      'RF Signal Propagation Simulator',
+      'RF Signal Quality Visualizations',
+      'QUIC based real-time vehicle monitoring application',
+      'Modular real-time Command + Control Application Platform',
+      'Shared Worker Decoding + Replay pipeline for asset telemetry',
+      'UI Library based on extending HeroUI v3',
+      'YOLO based object detection model to run on video feeds in realtime in the browser',
+      'Multi-plexed video streams with routing / navigation and object overlays',
+      'Multi-window React context / portal framework',
+      '3D tile overlays + navigation',
+      'Login experience + tenant management',
+      'Red-light capable visualization filters'
+    ],
+    tags: [
+      'react',
+      'typescript',
+      'git',
+      'command',
+      'control',
+      'communications',
+      'c3',
+      'c2',
+      'bazel',
+      'pkg',
+      'telegraf',
+      'influx',
+      'agentic workflows',
+      'gis',
+      'OIDC',
+      'QUIC',
+      'HTTP/3',
+      'protobuf',
+      'YOLO',
+      'WEBGL',
+      'deck.gl'
+    ],
+  },
+  {
+    logo: vannevarLogo,
+    title: 'vannevar',
+    years: `Sept . 2023  -  Jan . 2026`,
+    positions: ['Senior Staff Engineer'],
+    organizations: [
+      'sensors',
+      'hardware',
+      'platform',
+      'identity',
+      'access management',
+      'information environment',
+    ],
+    highlights: [
+      'Microfrontend Container & Framework',
+      'TAK Server & Integration',
+      'RF Detection Heatmap Visualizations',
+      'Handheld RF Sensor w/ SDR | Touchscreen | Keyboard | LTE | GPS | TAK Capabilities',
+      'Designed & developed a micro-frontend container + platform',
+      'Realtime FFT visualization system from remote devices',
+      'Software provisioning system for remote sensors',
+      'ADS-B / AIS / RF sweep signal collection + visualization',
+      'Real-time remote spectrum analyzer',
+      'Spectrogram viewer + visualization tools',
+      'Sentiment / Topic visualization',
+      'Authentication + authorization services / web components based on OpenID + OpenFGA',
+      'Designed + developed reusable platform components for scaffolding full stack applications',
+      'App launcher framework + UI',
+      'Integrated OpenTelemetry into full stack',
+      'Helped take multiple applications from MVP to Product',
+      'Frontend OAuth + instrumentation interceptors',
+      'Backend OAuth filters',
+      'Created shared UI libraries + design system',
+      'Designed + developed shared geo-spatial libraries + layer services based on Leaflet / Mapbox',
+      'Designed + developed Variety of visualizations and filtering for data modeling and analysis',
+      'Reusable GH workflows',
+      'Service Directory services + frontend / backend utilities for accessing that API',
+      'Reverse Geocoder services',
+    ],
+    tags: [
+      'react',
+      'typescript',
+      'git',
+      'lean',
+      'hero-ui',
+      'tailwind',
+      'node',
+      'vite',
+      'express',
+      'rest',
+      'oauth',
+      'web performance',
+      'uma',
+      'uhd',
+      'visx',
+      'signals',
+      'sdr',
+      'ais',
+      'ads-b',
+      'python',
+      'iot',
+      'rf',
+      'tak',
+      'webrtc',
+      'realtime',
+      'microservices',
+      'micro frontends',
+    ],
+    images: [vl2, vl3, vl4, vl5, vl6, vl7, vl8, vl9, vl10, vl11],
+  },
+  {
+    title: 'anedot',
+    years: `feb . 2022  -  sept . 2023`,
+    logo: anedotLogo,
+    positions: [
+      'Director of Engineering',
+      'Lead Software Engineer',
+      'Senior Software Engineer',
+    ],
+    organizations: ['Engineering', 'Action Pages', 'Infrastructure'],
+    highlights: [
+      'Led teams implementing Anedot X feature uplift + rollout',
+      'Worked to create pixel - perfect replications of visual designs and interactions',
+      'Developed next iteration of page builder',
+      'Oversaw contributions to newest frontend',
+      'Mentored junior engineers on team',
+      'Various custom UI components',
+      'Context aware multi-monitor React components',
+    ],
+    tags: [
+      'react',
+      'typescript',
+      'jest',
+      'git',
+      'clickup',
+      'lean',
+      'chakra-ui',
+      'npm',
+      'yarn',
+      'vite',
+      'ruby',
+      'rails',
+    ],
+  },
+  {
+    title: 'hudl',
+    years: 'oct . 2021  -  feb . 2022',
+    logo: hudlLogo,
+    positions: ['Lead Engineer'],
+    organizations: ['Hudl Beta'],
+    highlights: [
+      'Implemented new facets of new Insights Module',
+      'Overview stats report',
+      'Various visualization modules',
+      'Dynamic layout system',
+      'Multi-monitor layout manager',
+    ],
+    tags: [
+      'react',
+      'video processing',
+      'dot net',
+      'webdriver.io',
+      'jest',
+      'git',
+      'jira',
+      'microservices',
+      'micro frontends',
+      'rest',
+      'webpack',
+      'automated testing',
+      'npm',
+    ],
+    images: [insightsModule, betaReports, flexible1],
+  },
+  {
+    title: 'oracle',
+    years: 'oct . 2017  -  oct . 2021',
+    logo: oracleLogo,
+    positions: ['Associate Principal Engineer', 'Senior Software Architect'],
+    organizations: ['Clinical Imaging'],
+    highlights: [
+      'Designed / developed Cerner ImageViewer as a successor to Cerner SkyVue',
+      'IHE Compliant web app for viewing / evaluating / manipulating / measuring clinical image datasets',
+      'Developed an image cache / layered strategy to support high FPS rendering in the browser of ultrasound + other clinical images',
+      'Multi-monitor React components',
+      'Automated testing framework',
+      'Reusable dashboard for aggregating automated test data + regulatory reporting',
+      'Dashboard for the Presentation + Management of Imaging Archive Data',
+      'XZ Decoder in JavaScript',
+      'Snappy Framed Decoder in JavaScript',
+    ],
+    tags: [
+      'react',
+      '3d rendering',
+      'svg',
+      'vector processing',
+      'image processing',
+      'parallel algorithms',
+      'ruby',
+      '2D / 3D measurements',
+      'rails',
+      'jwt',
+      'oauth',
+      'openid',
+      'webdriver.io',
+      'jest',
+      'dicom',
+      'git',
+      'jira',
+      'microservices',
+      'micro frontends',
+      'rest',
+      'webpack',
+      'automated testing',
+      'npm',
+      'kubernetes',
+      'containerized deployments',
+      'data visualization',
+      'data aggregation',
+      'data registration',
+    ],
+    images: [cernerCardio, skyvue1],
+  },
+  {
+    title: 'apple',
+    years: 'jan . 2014  -  oct . 2017',
+    logo: appleLogo,
+    positions: ['POI Engineer'],
+    organizations: ['Maps'],
+    highlights: [
+      'Worked on internal web app for processing POI data for the Maps platform',
+      'Visualization and editing of Transit Shape Data',
+      'Designed / Developed features for real time reporting + management of transit incidents',
+      'Apple Pay data ingest',
+      'Developed visualizations for managing vendor data mapping + normalization',
+    ],
+    tags: [
+      'sbt',
+      'maven',
+      'angular',
+      'play',
+      'visualizations',
+      'd3',
+      'svg',
+      'geojson',
+      'leaflet',
+      'gis',
+      'radar',
+      'git',
+      'data visualization',
+      'data aggregation',
+      'data registration',
+    ],
+  },
+  {
+    title: 'oracle',
+    years: 'june . 2007  -  jan . 2014',
+    logo: oracleLogo,
+    positions: [
+      'Software Architect',
+      'Senior Software Engineer',
+      'Entry Level Engineer',
+    ],
+    organizations: ['Clinical Imaging'],
+    highlights: [
+      'Designed + developed the Cerner SkyVue Imaging Platform',
+      'Java / C++ based desktop application for diagnostic + distribution imaging',
+      'Zero footprint imaging application',
+      'Custom SWT UI components',
+      'Developed a multi-monitor SWT Workbench',
+      'Real-time application monitoring services + visualizations',
+      'Web application for workflow assessments',
+      'High availability distributed disk cache',
+      'Java HTTP libraries',
+      'DICOM WADO web services',
+      'WMI library to bridge into Java',
+      'OAuth utilities + configuration management framework',
+      'HTTP streaming libraries for desktop mirroring via AirPlay 1',
+      'Parallel JPEG encoder',
+    ],
+    tags: [
+      'Java',
+      'SWT',
+      'RCP',
+      'osgi',
+      'dicom',
+      'compression',
+      'hl7',
+      'ihe',
+      'JavaScipt',
+      'spring',
+      'java ee',
+      'servlets',
+      'maven',
+      'svn',
+      'git',
+      'jira',
+      'oauth',
+      'parallel processing',
+      'data visualization',
+      'data aggregation',
+      'data regsitration',
+    ],
+  },
+  {
+    title: 'intellectual property',
+    logo: patentedLogo,
+    highlights: [
+      'Patent on Remote Desktop Visualization / Compression / Delivery to a Browser',
+      'Provisional Patent on Image Caching for High Frame Rates',
+      'Provisional Patent on Modeling of Relationships of 2D/3D Images for Linked Display + Navigation',
+    ],
+  },
+  {
+    title: 'individual work',
+    logo: avatar,
+    highlights: [
+      'COVID 19 data visualization',
+      'Exterior / Interior Home Design',
+      'Consulting for cornerstoneJS Tooling',
+      'Holeshot BMX iOS/Android App',
+      'Race Day BMX iOS/Android App',
+      'Sprint Training iOS App',
+    ],
+    tags: [
+      'dicom',
+      '2D / 3D measurements',
+      'gis',
+      'svg',
+      'vector processing',
+      '3d rendering',
+      'bluetooth',
+      'mobile',
+      'hardware control',
+      'location services',
+      'data visualization',
+      'data aggregation',
+      'data registration',
+    ],
+  },
+];
+
+export const education: TimelineEntry[] = [
+  {
+    title: 'washington university in st. louis',
+    years: 'sept . 2005  -  may . 2007',
+    logo: washULogo,
+    positions: ['m.s.e.e.'],
+    highlights: [
+      `Master's of Electrical Engineering`,
+      'Focus on radiological imaging + mathematics',
+    ],
+  },
+  {
+    title: 'washington university in st. louis',
+    years: 'sept . 2002  -  may . 2006',
+    logo: washULogo,
+    positions: ['b.s.e.e.'],
+    highlights: [
+      `Bachelor's of Electrical Engineering`,
+      'Minor in Mathematics',
+      'Worked in human genetics research within the Washington University in St. Louis Medical School',
+      'Worked in microbiology research within the St. Louis University Medical School',
+      'Published papers in both positions',
+    ],
+  },
+];
