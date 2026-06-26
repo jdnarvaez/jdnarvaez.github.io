@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Resolve theme before paint (no flash). Stored choice wins, else system.
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          // Default to dark on first visit (ignore system preference).
+          if (t !== 'light' && t !== 'dark') {
+            t = 'dark';
+          }
+          var de = document.documentElement;
+          de.classList.add(t);
+          de.setAttribute('data-theme', t);
+          de.style.colorScheme = t;
+          var bg = t === 'light' ? '#f3efe6' : '#0a0908';
+          var fg = t === 'light' ? '#211d17' : '#ece7dd';
+          de.style.setProperty('--boot-bg', bg);
+          de.style.setProperty('--boot-fg', fg);
+          de.style.background = bg;
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0a0908" />
+    <meta
+      name="description"
+      content="Juan Narváez — developer + designer. Two decades across visualization, image processing, and full-stack engineering."
+    />
+    <meta property="og:title" content="Juan Narváez // Developer + Designer" />
+    <meta
+      property="og:description"
+      content="Developer + designer. Visualization, image processing, and full-stack engineering."
+    />
+    <meta property="og:type" content="website" />
+    <title>Juan Narváez // Developer + Designer</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: var(--boot-bg, #0a0908);
+      }
+      #boot {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: var(--boot-bg, #0a0908);
+        font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: var(--boot-fg, #ece7dd);
+        z-index: 0;
+      }
+      #boot .m {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.8rem;
+      }
+      #boot .d {
+        width: 12px;
+        height: 12px;
+        background: #ff6a1a;
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        box-shadow: 0 0 12px #ff6a1a;
+        animation: bootpulse 1.2s ease-in-out infinite;
+      }
+      @keyframes bootpulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.45;
+          transform: scale(0.8);
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-CXBd627M.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CmeaVwbd.css">
+  </head>
+  <body>
+    <div id="root">
+      <div id="boot"><span class="d"></span></div>
+    </div>
+  </body>
+</html>
