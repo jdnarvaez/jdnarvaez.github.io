@@ -65,7 +65,10 @@ export const experience: TimelineEntry[] = [
     positions: ['Principal Engineer'],
     organizations: ['c3', 'c3 integrations'],
     highlights: [
-      'Designed & developed OASIS OneLink, a modular real-time C2 (Command + Contro) Application Platform', 
+      'Designed & developed OASIS OneLink, a modular real-time C2 (Command + Contro) Application Platform',
+      'Gamepad optimized navigation shell',
+      'Gamepad / Keyboard based vehicle teleoperation UI + controls w / HUD',
+      'Electron based multi-platform deployment scheme w/ compatibility for ROG ALLY X + Steam Deck',
       'Shared Worker Decoding + Replay pipeline for asset telemetry',
       'UI Library based on extending HeroUI v3',
       'Offline device provisioning workflows and framework',
@@ -109,7 +112,7 @@ export const experience: TimelineEntry[] = [
       'WEBGL',
       'deck.gl',
       'otel',
-      'electron'
+      'electron',
     ],
   },
   {
