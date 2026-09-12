@@ -3,10 +3,10 @@ import { motion, useReducedMotion } from 'motion/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { TbArrowUp, TbBrandGithub, TbBrandLinkedin } from 'react-icons/tb';
 import { Hero } from './components/Hero';
-import { IntroSequence } from './components/IntroSequence';
-import { Radar } from './components/Radar';
 import { Overlay } from './components/hud/Overlay';
 import { StatusBar, type Section } from './components/hud/StatusBar';
+import { IntroSequence } from './components/IntroSequence';
+import { Radar } from './components/Radar';
 import { SectionLabel } from './components/SectionLabel';
 import { Timeline } from './components/Timeline';
 import { education, experience, profile } from './data/resume';
@@ -14,6 +14,7 @@ import { useScrollProgress } from './hooks/useScrollProgress';
 import { useScrollSpy } from './hooks/useScrollSpy';
 import { Background } from './three/Background';
 import { pointerSignal } from './three/scrollSignal';
+import { toRomanNumeral } from './utils/toRomanNumeral';
 
 const SECTIONS: Section[] = [
   { id: 'intro', label: 'INTRO', index: '01' },
@@ -21,7 +22,7 @@ const SECTIONS: Section[] = [
   { id: 'education', label: 'EDUCATION', index: '03' },
 ];
 
-const SECTION_IDS = SECTIONS.map((s) => s.id);
+const SECTION_IDS = SECTIONS.map(s => s.id);
 
 function Footer() {
   return (
@@ -29,7 +30,7 @@ function Footer() {
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <div className="hud-label mt-2 flex items-center">
-            © MMXXVI
+            © {toRomanNumeral(new Date().getFullYear())}
           </div>
         </div>
         <div className="flex items-center gap-2.5">
@@ -103,7 +104,7 @@ export default function App() {
   }, [reducedMotion]);
 
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
+    setTheme(prev => {
       const next: Theme = prev === 'dark' ? 'light' : 'dark';
       const de = document.documentElement;
       de.classList.remove('light', 'dark');
@@ -134,13 +135,11 @@ export default function App() {
         onToggleTheme={toggleTheme}
       />
 
-      {!introDone && (
-        <IntroSequence theme={theme} onDone={handleIntroDone} />
-      )}
+      {!introDone && <IntroSequence theme={theme} onDone={handleIntroDone} />}
 
       {/* The whole page scrolls inside a ScrollShadow for HUD edge-fades. */}
       <ScrollShadow
-        ref={(el) => setScroller(el)}
+        ref={el => setScroller(el)}
         size={64}
         className="hud-scroll fixed inset-x-0 bottom-0 top-[52px] z-10 scroll-smooth"
       >
@@ -148,9 +147,7 @@ export default function App() {
           className="mx-auto w-full max-w-6xl px-4 pb-28 pt-6 sm:px-6 lg:px-10"
           initial={animateReveal ? { opacity: 0, scale: 1.04 } : false}
           animate={
-            introDone
-              ? { opacity: 1, scale: 1 }
-              : { opacity: 0, scale: 1.04 }
+            introDone ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.04 }
           }
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -162,20 +159,20 @@ export default function App() {
               id="experience"
               index="02"
               title="Experience"
-            meta={`${String(experience.length).padStart(2, '0')} RECORDS`}
-          />
-          <Timeline entries={experience} scroller={scroller} />
-        </section>
+              meta={`${String(experience.length).padStart(2, '0')} RECORDS`}
+            />
+            <Timeline entries={experience} scroller={scroller} />
+          </section>
 
           <section className="mt-16">
             <SectionLabel
               id="education"
               index="03"
               title="Education"
-            meta={`${String(education.length).padStart(2, '0')} RECORDS`}
-          />
-          <Timeline entries={education} scroller={scroller} />
-        </section>
+              meta={`${String(education.length).padStart(2, '0')} RECORDS`}
+            />
+            <Timeline entries={education} scroller={scroller} />
+          </section>
 
           <Footer />
         </motion.main>
@@ -185,7 +182,7 @@ export default function App() {
         sections={SECTIONS}
         active={active}
         progress={progress}
-        onJump={(id) =>
+        onJump={id =>
           document
             .getElementById(id)
             ?.scrollIntoView({ behavior: 'smooth', block: 'start' })

@@ -1,5 +1,5 @@
 import { Link } from '@heroui/react';
-import { TbArrowDown, TbBrandGithub, TbBrandLinkedin, TbFileText } from 'react-icons/tb';
+import { TbArrowDown, TbBrandGithub, TbBrandLinkedin } from 'react-icons/tb';
 import { profile } from '../data/resume';
 import { cn } from '../utils/cn';
 import { HeroName } from './HeroName';
@@ -58,7 +58,6 @@ function IDBadge() {
           {[
             ['NAME', profile.name],
             ['ROLE', 'PRINCIPAL ENGINEER'],
-            ['LOCATION', profile.location],
           ].map(([k, v]) => (
             <div key={k} className="flex flex-col gap-0.5">
               <dt className="hud-label text-[8px]">{k}</dt>
@@ -90,9 +89,7 @@ export function Hero({ reveal }: { reveal: boolean }) {
         {/* identity */}
         <div>
           <div className="mb-5 flex flex-wrap items-center gap-3">
-            <span className="hud-label text-[var(--accent)]">
-              ▚ PORTFOLIO
-            </span>
+            <span className="hud-label text-[var(--accent)]">▚ PORTFOLIO</span>
             <span className="hidden h-px w-12 bg-[var(--separator)] sm:block" />
             <span className="hud-label"></span>
           </div>
@@ -116,17 +113,6 @@ export function Hero({ reveal }: { reveal: boolean }) {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href={profile.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                actionBase,
-                'border-[var(--accent)] bg-[var(--accent)] text-[var(--accent-foreground)] hover:bg-[var(--accent-hover)] box-glow'
-              )}
-            >
-              <TbFileText size={15} /> Resume
-            </Link>
             <Link
               href={profile.links.github}
               target="_blank"

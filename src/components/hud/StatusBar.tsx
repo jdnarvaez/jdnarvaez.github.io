@@ -51,29 +51,29 @@ export function StatusBar({
         <div className="flex min-w-0 flex-1 items-center">
           <a
             href="#top"
-          onClick={(e) => {
-            e.preventDefault();
-            document
-              .getElementById('top')
-              ?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="group flex items-center gap-2.5"
-        >
-          <span className="grid size-10 place-items-center border border-[var(--border)] text-[var(--accent)] text-glow font-mono text-sm font-bold leading-none">
-            JDN
-          </span>
-          <span className="hidden flex-col leading-tight sm:flex">
-            <span className="font-display text-[13px] font-black tracking-[-0.11em] text-[var(--foreground)]">
-              JUAN&nbsp;NARVÁEZ
+            onClick={e => {
+              e.preventDefault();
+              document
+                .getElementById('top')
+                ?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="group flex items-center gap-2.5"
+          >
+            <span className="grid size-10 place-items-center border border-[var(--border)] text-[var(--accent)] text-glow font-mono text-sm font-bold leading-none">
+              JDN
             </span>
-            <span className="hud-label text-[9px]">DEV // DESIGN // ENG</span>
-          </span>
+            <span className="hidden flex-col leading-tight sm:flex">
+              <span className="font-display text-[13px] font-black tracking-[-0.11em] text-[var(--foreground)]">
+                JUAN&nbsp;NARVÁEZ
+              </span>
+              <span className="hud-label text-[9px]">DEV // DESIGN // ENG</span>
+            </span>
           </a>
         </div>
 
         {/* center: section nav — viewport-centered between equal side columns */}
         <nav className="flex shrink-0 items-center gap-1 sm:gap-2">
-          {sections.map((s) => {
+          {sections.map(s => {
             const isActive = active === s.id;
             return (
               <button
@@ -89,7 +89,7 @@ export function StatusBar({
               >
                 <span
                   className={cn(
-                    'size-1.5 shrink-0 transition-all duration-200',
+                    'size-1.5 shrink-0 transition-all duration-200 mb-0.5',
                     isActive
                       ? 'bg-[var(--accent)] box-glow'
                       : 'bg-[var(--muted)]/40 group-hover:bg-[var(--foreground)]/60'
@@ -135,7 +135,8 @@ export function StatusBar({
           className="absolute inset-y-0 left-0 bg-[var(--accent)]"
           style={{
             width: `${pct}%`,
-            boxShadow: '0 0 8px 0 color-mix(in oklab, var(--accent) 70%, transparent)',
+            boxShadow:
+              '0 0 8px 0 color-mix(in oklab, var(--accent) 70%, transparent)',
           }}
         />
       </div>

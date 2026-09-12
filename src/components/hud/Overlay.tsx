@@ -1,3 +1,4 @@
+import { toRomanNumeral } from '@/utils/toRomanNumeral';
 import { CornerBrackets } from './CornerBrackets';
 
 const TICKS = Array.from({ length: 11 }, (_, i) => i);
@@ -34,7 +35,7 @@ export function Overlay() {
 
       {/* left vertical ruler */}
       <div className="absolute bottom-10 left-3 top-[88px] hidden w-8 flex-col justify-between lg:flex">
-        {TICKS.map((t) => (
+        {TICKS.map(t => (
           <div key={t} className="flex items-center gap-1.5">
             <span
               className="block bg-[var(--grid-line-strong,rgba(255,255,255,0.22))]"
@@ -62,7 +63,8 @@ export function Overlay() {
           className="hud-label text-[9px] opacity-50"
           style={{ writingMode: 'vertical-rl' }}
         >
-          JDNARVÁEZ // PORTFOLIO // BUILD&nbsp;MMXXVI
+          JDNARVÁEZ // PORTFOLIO // BUILD&nbsp;
+          {toRomanNumeral(new Date().getFullYear())}
         </span>
       </div>
 

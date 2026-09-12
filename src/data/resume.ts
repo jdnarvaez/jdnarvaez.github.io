@@ -10,7 +10,6 @@ import cernerCardio from '../assets/cerner_cardio.png';
 import flexible1 from '../assets/flexible1.png';
 import hudlLogo from '../assets/hudl.jpg';
 import insightsModule from '../assets/insights_module.png';
-import resumePdf from '../assets/jdnarvaez_resume.pdf';
 import oracleLogo from '../assets/oracle.jpg';
 import patentedLogo from '../assets/patented.jpg';
 import portrait from '../assets/portrait.jpeg';
@@ -45,12 +44,10 @@ export const profile = {
   handle: 'jdnarvaez',
   roles: ['DEVELOPER', 'ENGINEER', 'DESIGNER', 'ILLUSTRATOR'],
   tagline: 'Developer + Designer',
-  location: 'SOUTHWESTERN UTAH',
   intro:
     "I'm Juan Narváez, and I enjoy designing and writing software (amongst other things). I've spent most of my career working on frontend applications in the realm of visualization and image processing (mostly medical imaging). I've also written a variety of backend services for processing + streaming image data, as well as the corresponding frontend components to take advantage of those services.",
   avatar,
   portrait,
-  resume: resumePdf,
   links: {
     github: 'https://github.com/jdnarvaez',
     linkedin: 'https://linkedin.com/in/jdnarvaez',
